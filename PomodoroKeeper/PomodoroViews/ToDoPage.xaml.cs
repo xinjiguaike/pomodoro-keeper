@@ -47,7 +47,7 @@ namespace PomodoroKeeper.PomodoroViews
             lvToDo.ItemsSource = PomToDoSheet.ToDoTaskList;
             lvUrgent.ItemsSource = PomToDoSheet.UnplannedTaskList;
             ObservableCollection<string> testPomsList = new ObservableCollection<string>();
-            
+           // lvUrgent.Child.Add()
             for (int i = 0; i < 3; i++)
             {
                 testPomsList.Add("Green");
