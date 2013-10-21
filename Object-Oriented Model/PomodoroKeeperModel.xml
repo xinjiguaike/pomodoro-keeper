@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmi:id="_kkgsMBeLEd60N8ipLbB6nA" name="Class Diagram_Pomodoro">
+  <packagedElement xmi:type="uml:Association" xmi:id="_gy5eoDMZEeOJXOt_T56pGQ" name="Association2" memberEnd="_gzvMIDMZEeOJXOt_T56pGQ _g2bTwDMZEeOJXOt_T56pGQ" navigableOwnedEnd="_g2bTwDMZEeOJXOt_T56pGQ">
+    <ownedEnd xmi:id="_gzvMIDMZEeOJXOt_T56pGQ" name="" visibility="public" type="_hCmukDMZEeOJXOt_T56pGQ" association="_gy5eoDMZEeOJXOt_T56pGQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_g2K1EDMZEeOJXOt_T56pGQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_g2BrIDMZEeOJXOt_T56pGQ"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_g2bTwDMZEeOJXOt_T56pGQ" name="" visibility="public" type="_g428sDMZEeOJXOt_T56pGQ" aggregation="composite" association="_gy5eoDMZEeOJXOt_T56pGQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_g2p9QTMZEeOJXOt_T56pGQ" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_g2p9QDMZEeOJXOt_T56pGQ"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_g2tAkDMZEeOJXOt_T56pGQ" name="Association3" memberEnd="_g2uOsDMZEeOJXOt_T56pGQ _g22KgDMZEeOJXOt_T56pGQ" navigableOwnedEnd="_g22KgDMZEeOJXOt_T56pGQ">
+    <ownedEnd xmi:id="_g2uOsDMZEeOJXOt_T56pGQ" name="" visibility="public" type="_hIbpwDMZEeOJXOt_T56pGQ" association="_g2tAkDMZEeOJXOt_T56pGQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_g2wD4DMZEeOJXOt_T56pGQ" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_g2vc0DMZEeOJXOt_T56pGQ"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_g22KgDMZEeOJXOt_T56pGQ" name="" visibility="public" type="_g9BD8DMZEeOJXOt_T56pGQ" aggregation="shared" association="_g2tAkDMZEeOJXOt_T56pGQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_g24mwDMZEeOJXOt_T56pGQ" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_g23_sDMZEeOJXOt_T56pGQ"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_g26b8DMZEeOJXOt_T56pGQ" name="Association5" memberEnd="_g27DADMZEeOJXOt_T56pGQ _g3C-0DMZEeOJXOt_T56pGQ" navigableOwnedEnd="_g3C-0DMZEeOJXOt_T56pGQ">
+    <ownedEnd xmi:id="_g27DADMZEeOJXOt_T56pGQ" name="" visibility="public" type="_hK69EDMZEeOJXOt_T56pGQ" association="_g26b8DMZEeOJXOt_T56pGQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_g284MDMZEeOJXOt_T56pGQ" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_g28RIDMZEeOJXOt_T56pGQ"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_g3C-0DMZEeOJXOt_T56pGQ" name="toDoTask" visibility="public" type="_g9BD8DMZEeOJXOt_T56pGQ" association="_g26b8DMZEeOJXOt_T56pGQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_g3Dl4TMZEeOJXOt_T56pGQ" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_g3Dl4DMZEeOJXOt_T56pGQ"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_g428sDMZEeOJXOt_T56pGQ" name="InventroyTask">
+    <ownedAttribute xmi:id="_g6jl0DMZEeOJXOt_T56pGQ" name="strDescritpion" visibility="private" type="_g6rhoDMZEeOJXOt_T56pGQ"/>
+    <ownedAttribute xmi:id="_g615sDMZEeOJXOt_T56pGQ" name="nPriority" visibility="private" type="_g691gDMZEeOJXOt_T56pGQ"/>
+    <ownedOperation xmi:id="_g7W3EDMZEeOJXOt_T56pGQ" name="get_strDescritpion" visibility="public" bodyCondition="_g7mHoDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_g7mHoDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_g7pyADMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_g763wDMZEeOJXOt_T56pGQ" name="get_strDescritpion" type="_g6rhoDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_g8AXUDMZEeOJXOt_T56pGQ" name="set_strDescritpion" visibility="public" bodyCondition="_g8HFADMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_g8HFADMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_g8HsEDMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_g8LWcDMZEeOJXOt_T56pGQ" name="value" type="_g6rhoDMZEeOJXOt_T56pGQ"/>
+      <ownedParameter xmi:id="_g8T5UDMZEeOJXOt_T56pGQ" name="set_strDescritpion" type="_g8UgYDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_g8VugDMZEeOJXOt_T56pGQ" name="get_nPriority" visibility="public" bodyCondition="_g8ccMDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_g8ccMDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_g8dqUDMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_g8ffgDMZEeOJXOt_T56pGQ" name="get_nPriority" type="_g691gDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_g8hUsDMZEeOJXOt_T56pGQ" name="set_nPriority" visibility="public" bodyCondition="_g8zokDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_g8zokDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_g80PoDMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_g85vMDMZEeOJXOt_T56pGQ" name="value" type="_g691gDMZEeOJXOt_T56pGQ"/>
+      <ownedParameter xmi:id="_g87kYDMZEeOJXOt_T56pGQ" name="set_nPriority" type="_g8UgYDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_g6rhoDMZEeOJXOt_T56pGQ" name="string"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_g691gDMZEeOJXOt_T56pGQ" name="int"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_g8UgYDMZEeOJXOt_T56pGQ" name="void"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_g9BD8DMZEeOJXOt_T56pGQ" name="ToDoTask">
+    <generalization xmi:id="_g9Jm0DMZEeOJXOt_T56pGQ" general="_g428sDMZEeOJXOt_T56pGQ">
+      <ownedComment xmi:id="_g9MqIDMZEeOJXOt_T56pGQ">
+        <body>ToDoTask extends InventroyTask</body>
+      </ownedComment>
+    </generalization>
+    <ownedAttribute xmi:id="_g9ioYDMZEeOJXOt_T56pGQ" name="TaskColor" visibility="private" type="_g9j2gDMZEeOJXOt_T56pGQ"/>
+    <ownedAttribute xmi:id="_g9qkMDMZEeOJXOt_T56pGQ" name="bIsDone" visibility="private" type="_g9rLQDMZEeOJXOt_T56pGQ"/>
+    <ownedAttribute xmi:id="_g9x48DMZEeOJXOt_T56pGQ" name="bIsUnplanned" visibility="private" type="_g9rLQDMZEeOJXOt_T56pGQ"/>
+    <ownedAttribute xmi:id="_g95NsDMZEeOJXOt_T56pGQ" name="nEstimatedPoms" visibility="private" type="_g691gDMZEeOJXOt_T56pGQ"/>
+    <ownedAttribute xmi:id="_g-BJgDMZEeOJXOt_T56pGQ" name="nCompletedPomos" visibility="private" type="_g691gDMZEeOJXOt_T56pGQ"/>
+    <ownedAttribute xmi:id="_g-JFUDMZEeOJXOt_T56pGQ" name="nAbandonedPoms" visibility="private" type="_g691gDMZEeOJXOt_T56pGQ"/>
+    <ownedAttribute xmi:id="_g-PzADMZEeOJXOt_T56pGQ" name="nInternalInterrupts" visibility="private" type="_g691gDMZEeOJXOt_T56pGQ"/>
+    <ownedAttribute xmi:id="_g-XHwDMZEeOJXOt_T56pGQ" name="nExternalInterruputs" visibility="private" type="_g691gDMZEeOJXOt_T56pGQ"/>
+    <ownedAttribute xmi:id="_g-ecgDMZEeOJXOt_T56pGQ" name="nProgress" visibility="private" type="_g691gDMZEeOJXOt_T56pGQ"/>
+    <ownedOperation xmi:id="_g_CdMDMZEeOJXOt_T56pGQ" name="get_TaskColor" visibility="public" bodyCondition="_g_Jx8DMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_g_Jx8DMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_g_Jx8TMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_g_LnIDMZEeOJXOt_T56pGQ" name="get_TaskColor" type="_g9j2gDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_g_NcUDMZEeOJXOt_T56pGQ" name="set_TaskColor" visibility="public" bodyCondition="_g_UxEDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_g_UxEDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_g_UxETMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_g_YbcDMZEeOJXOt_T56pGQ" name="value" type="_g9j2gDMZEeOJXOt_T56pGQ"/>
+      <ownedParameter xmi:id="_g_aQoDMZEeOJXOt_T56pGQ" name="set_TaskColor" type="_g8UgYDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_g_bewDMZEeOJXOt_T56pGQ" name="get_bIsDone" visibility="public" bodyCondition="_g_iMcDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_g_iMcDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_g_izgDMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_g_kosDMZEeOJXOt_T56pGQ" name="get_bIsDone" type="_g9rLQDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_g_l20DMZEeOJXOt_T56pGQ" name="set_bIsDone" visibility="public" bodyCondition="_g_skgDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_g_skgDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_g_skgTMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_g_4xwDMZEeOJXOt_T56pGQ" name="value" type="_g9rLQDMZEeOJXOt_T56pGQ"/>
+      <ownedParameter xmi:id="_g_6m8DMZEeOJXOt_T56pGQ" name="set_bIsDone" type="_g8UgYDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_g_71EDMZEeOJXOt_T56pGQ" name="get_bIsUnplanned" visibility="public" bodyCondition="_hACiwDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hACiwDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hACiwTMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hAE_ADMZEeOJXOt_T56pGQ" name="get_bIsUnplanned" type="_g9rLQDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hAGNIDMZEeOJXOt_T56pGQ" name="set_bIsUnplanned" visibility="public" bodyCondition="_hAMTwDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hAMTwDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hAM60DMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hAPXEDMZEeOJXOt_T56pGQ" name="value" type="_g9rLQDMZEeOJXOt_T56pGQ"/>
+      <ownedParameter xmi:id="_hARMQDMZEeOJXOt_T56pGQ" name="set_bIsUnplanned" type="_g8UgYDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hARzUDMZEeOJXOt_T56pGQ" name="get_nEstimatedPoms" visibility="public" bodyCondition="_hAZIEDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hAZIEDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hAZIETMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hAa9QDMZEeOJXOt_T56pGQ" name="get_nEstimatedPoms" type="_g691gDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hAdZgDMZEeOJXOt_T56pGQ" name="set_nEstimatedPoms" visibility="public" bodyCondition="_hAkuQDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hAkuQDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hAkuQTMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hAnxkDMZEeOJXOt_T56pGQ" name="value" type="_g691gDMZEeOJXOt_T56pGQ"/>
+      <ownedParameter xmi:id="_hApmwDMZEeOJXOt_T56pGQ" name="set_nEstimatedPoms" type="_g8UgYDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hArb8DMZEeOJXOt_T56pGQ" name="get_nCompletedPomos" visibility="public" bodyCondition="_hAxikDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hAxikDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hAyJoDMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hAz-0DMZEeOJXOt_T56pGQ" name="get_nCompletedPomos" type="_g691gDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hA1M8DMZEeOJXOt_T56pGQ" name="set_nCompletedPomos" visibility="public" bodyCondition="_hA76oDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hA76oDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hA76oTMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hA-98DMZEeOJXOt_T56pGQ" name="value" type="_g691gDMZEeOJXOt_T56pGQ"/>
+      <ownedParameter xmi:id="_hBAzIDMZEeOJXOt_T56pGQ" name="set_nCompletedPomos" type="_g8UgYDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hBBaMDMZEeOJXOt_T56pGQ" name="get_nAbandonedPoms" visibility="public" bodyCondition="_hBJWADMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hBJWADMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hBJ9EDMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hBLyQDMZEeOJXOt_T56pGQ" name="get_nAbandonedPoms" type="_g691gDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hBNncDMZEeOJXOt_T56pGQ" name="set_nAbandonedPoms" visibility="public" bodyCondition="_hBUVIDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hBUVIDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hBUVITMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hBX_gDMZEeOJXOt_T56pGQ" name="value" type="_g691gDMZEeOJXOt_T56pGQ"/>
+      <ownedParameter xmi:id="_hBZNoDMZEeOJXOt_T56pGQ" name="set_nAbandonedPoms" type="_g8UgYDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hBabwDMZEeOJXOt_T56pGQ" name="get_nInternalInterrupts" visibility="public" bodyCondition="_hBhJcDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hBhJcDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hBhwgDMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hBi-oDMZEeOJXOt_T56pGQ" name="get_nInternalInterrupts" type="_g691gDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hBkz0DMZEeOJXOt_T56pGQ" name="set_nInternalInterrupts" visibility="public" bodyCondition="_hBq6cDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hBq6cDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hBrhgDMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hBuk0DMZEeOJXOt_T56pGQ" name="value" type="_g691gDMZEeOJXOt_T56pGQ"/>
+      <ownedParameter xmi:id="_hBvy8DMZEeOJXOt_T56pGQ" name="set_nInternalInterrupts" type="_g8UgYDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hBy2QDMZEeOJXOt_T56pGQ" name="get_nExternalInterruputs" visibility="public" bodyCondition="_hB5j8DMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hB5j8DMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hB5j8TMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hB7ZIDMZEeOJXOt_T56pGQ" name="get_nExternalInterruputs" type="_g691gDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hB8nQDMZEeOJXOt_T56pGQ" name="set_nExternalInterruputs" visibility="public" bodyCondition="_hCDU8DMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hCDU8DMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hCD8ADMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hCG_UDMZEeOJXOt_T56pGQ" name="value" type="_g691gDMZEeOJXOt_T56pGQ"/>
+      <ownedParameter xmi:id="_hCINcDMZEeOJXOt_T56pGQ" name="set_nExternalInterruputs" type="_g8UgYDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hCJbkDMZEeOJXOt_T56pGQ" name="get_nProgress" visibility="public" bodyCondition="_hCQwUDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hCQwUDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hCQwUTMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hCTMkDMZEeOJXOt_T56pGQ" name="get_nProgress" type="_g691gDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hCUasDMZEeOJXOt_T56pGQ" name="set_nProgress" visibility="public" bodyCondition="_hCbvcDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hCbvcDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hCcWgDMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hCfZ0DMZEeOJXOt_T56pGQ" name="value" type="_g691gDMZEeOJXOt_T56pGQ"/>
+      <ownedParameter xmi:id="_hChPADMZEeOJXOt_T56pGQ" name="set_nProgress" type="_g8UgYDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_g9j2gDMZEeOJXOt_T56pGQ" name="Enum"/>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_g9rLQDMZEeOJXOt_T56pGQ" name="bool"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_hCmukDMZEeOJXOt_T56pGQ" name="ActivityInventory">
+    <ownedAttribute xmi:id="_hCyUwDMZEeOJXOt_T56pGQ" name="nMaxCount" visibility="private" type="_g691gDMZEeOJXOt_T56pGQ"/>
+    <ownedAttribute xmi:id="_hC5pgDMZEeOJXOt_T56pGQ" name="nTaskCount" visibility="private" type="_g691gDMZEeOJXOt_T56pGQ"/>
+    <ownedAttribute xmi:id="_hDAXMDMZEeOJXOt_T56pGQ" name="TaskList" visibility="private" type="_hDBlUDMZEeOJXOt_T56pGQ"/>
+    <ownedAttribute xmi:id="_hDITADMZEeOJXOt_T56pGQ" name="strTitle" visibility="private" type="_g6rhoDMZEeOJXOt_T56pGQ"/>
+    <ownedOperation xmi:id="_hDgtgDMZEeOJXOt_T56pGQ" name="get_nTaskCount" visibility="public" bodyCondition="_hDnbMDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hDnbMDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hDoCQDMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hDpQYDMZEeOJXOt_T56pGQ" name="get_nTaskCount" type="_g691gDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hDrFkDMZEeOJXOt_T56pGQ" name="set_nTaskCount" visibility="public" bodyCondition="_hDxzQDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hDxzQDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hDyaUDMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hD1doDMZEeOJXOt_T56pGQ" name="value" type="_g691gDMZEeOJXOt_T56pGQ"/>
+      <ownedParameter xmi:id="_hD354DMZEeOJXOt_T56pGQ" name="set_nTaskCount" type="_g8UgYDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hD5IADMZEeOJXOt_T56pGQ" name="get_TaskList" visibility="public" bodyCondition="_hEAcwDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hEAcwDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hEAcwTMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hECR8DMZEeOJXOt_T56pGQ" name="get_TaskList" type="_hDBlUDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hEDgEDMZEeOJXOt_T56pGQ" name="set_TaskList" visibility="public" bodyCondition="_hELb4DMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hELb4DMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hEMC8DMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hEOfMDMZEeOJXOt_T56pGQ" name="value" type="_hDBlUDMZEeOJXOt_T56pGQ"/>
+      <ownedParameter xmi:id="_hEQUYDMZEeOJXOt_T56pGQ" name="set_TaskList" type="_g8UgYDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hERigDMZEeOJXOt_T56pGQ" name="get_strTitle" visibility="public" bodyCondition="_hEYQMDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hEYQMDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hEY3QDMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hEaFYDMZEeOJXOt_T56pGQ" name="get_strTitle" type="_g6rhoDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hEb6kDMZEeOJXOt_T56pGQ" name="set_strTitle" visibility="public" bodyCondition="_hEioQDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hEioQDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hEioQTMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hElEgDMZEeOJXOt_T56pGQ" name="value" type="_g6rhoDMZEeOJXOt_T56pGQ"/>
+      <ownedParameter xmi:id="_hEngwDMZEeOJXOt_T56pGQ" name="set_strTitle" type="_g8UgYDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hEou4DMZEeOJXOt_T56pGQ" name="AddTask" visibility="public" bodyCondition="_hEvckDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hEvckDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hEwDoDMZEeOJXOt_T56pGQ" name="TemplateBody" value="%DefaultBody%"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hEx40DMZEeOJXOt_T56pGQ" name="AddTask" type="_g9rLQDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hEzuADMZEeOJXOt_T56pGQ" name="RemoveTask" visibility="public" bodyCondition="_hE7CwDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hE7CwDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hE7CwTMZEeOJXOt_T56pGQ" name="TemplateBody" value="%DefaultBody%"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hE838DMZEeOJXOt_T56pGQ" name="RemoveTask" type="_g9rLQDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_hDBlUDMZEeOJXOt_T56pGQ" name="Array&lt;InventoryTask>"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_hFC-kDMZEeOJXOt_T56pGQ" name="DailyPerformance" clientDependency="_hOGz8DMZEeOJXOt_T56pGQ">
+    <ownedAttribute xmi:id="_hFSPIDMZEeOJXOt_T56pGQ" name="nStartedPoms" visibility="private" type="_g691gDMZEeOJXOt_T56pGQ"/>
+    <ownedAttribute xmi:id="_hFZj4DMZEeOJXOt_T56pGQ" name="nEstimatedPoms" visibility="private" type="_g691gDMZEeOJXOt_T56pGQ"/>
+    <ownedAttribute xmi:id="_hFcAIDMZEeOJXOt_T56pGQ" name="nCompletedPoms" visibility="private" type="_g691gDMZEeOJXOt_T56pGQ"/>
+    <ownedAttribute xmi:id="_hFjU4DMZEeOJXOt_T56pGQ" name="nAbandonedPoms" visibility="private" type="_g691gDMZEeOJXOt_T56pGQ"/>
+    <ownedAttribute xmi:id="_hFlxIDMZEeOJXOt_T56pGQ" name="nInternalInterrupts" visibility="private" type="_g691gDMZEeOJXOt_T56pGQ"/>
+    <ownedAttribute xmi:id="_hFoNYDMZEeOJXOt_T56pGQ" name="nExternalInterrupts" visibility="private" type="_g691gDMZEeOJXOt_T56pGQ"/>
+    <ownedAttribute xmi:id="_hFviIDMZEeOJXOt_T56pGQ" name="Date" visibility="private" type="_hFwwQDMZEeOJXOt_T56pGQ"/>
+    <ownedOperation xmi:id="_hGP4cDMZEeOJXOt_T56pGQ" name="get_nStartedPoms" visibility="public" bodyCondition="_hGWmIDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hGWmIDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hGWmITMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hGYbUDMZEeOJXOt_T56pGQ" name="get_nStartedPoms" type="_g691gDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hGaQgDMZEeOJXOt_T56pGQ" name="set_nStartedPoms" visibility="public" bodyCondition="_hGg-MDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hGg-MDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hGiMUDMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hGkokDMZEeOJXOt_T56pGQ" name="value" type="_g691gDMZEeOJXOt_T56pGQ"/>
+      <ownedParameter xmi:id="_hGmdwDMZEeOJXOt_T56pGQ" name="set_nStartedPoms" type="_g8UgYDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hGnE0DMZEeOJXOt_T56pGQ" name="get_nEstimatedPoms" visibility="public" bodyCondition="_hGo6ADMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hGo6ADMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hGo6ATMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hGqvMDMZEeOJXOt_T56pGQ" name="get_nEstimatedPoms" type="_g691gDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hGr9UDMZEeOJXOt_T56pGQ" name="set_nEstimatedPoms" visibility="public" bodyCondition="_hGtLcDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hGtLcDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hGtLcTMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hGwOwDMZEeOJXOt_T56pGQ" name="value" type="_g691gDMZEeOJXOt_T56pGQ"/>
+      <ownedParameter xmi:id="_hGyD8DMZEeOJXOt_T56pGQ" name="set_nEstimatedPoms" type="_g8UgYDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hGzSEDMZEeOJXOt_T56pGQ" name="get_nCompletedPoms" visibility="public" bodyCondition="_hG5_wDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hG5_wDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hG6m0DMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hG8cADMZEeOJXOt_T56pGQ" name="get_nCompletedPoms" type="_g691gDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hG-RMDMZEeOJXOt_T56pGQ" name="set_nCompletedPoms" visibility="public" bodyCondition="_hHFl8DMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hHFl8DMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hHFl8TMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hHIpQDMZEeOJXOt_T56pGQ" name="value" type="_g691gDMZEeOJXOt_T56pGQ"/>
+      <ownedParameter xmi:id="_hHKecDMZEeOJXOt_T56pGQ" name="set_nCompletedPoms" type="_g8UgYDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hHLskDMZEeOJXOt_T56pGQ" name="get_nAbandonedPoms" visibility="public" bodyCondition="_hHNhwDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hHNhwDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hHNhwTMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hHPW8DMZEeOJXOt_T56pGQ" name="get_nAbandonedPoms" type="_g691gDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hHQlEDMZEeOJXOt_T56pGQ" name="set_nAbandonedPoms" visibility="public" bodyCondition="_hHSaQDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hHSaQDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hHSaQTMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hHVdkDMZEeOJXOt_T56pGQ" name="value" type="_g691gDMZEeOJXOt_T56pGQ"/>
+      <ownedParameter xmi:id="_hHXSwDMZEeOJXOt_T56pGQ" name="set_nAbandonedPoms" type="_g8UgYDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hHYg4DMZEeOJXOt_T56pGQ" name="get_nInternalInterrupts" visibility="public" bodyCondition="_hHaWEDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hHaWEDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hHa9IDMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hHcyUDMZEeOJXOt_T56pGQ" name="get_nInternalInterrupts" type="_g691gDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hHeAcDMZEeOJXOt_T56pGQ" name="set_nInternalInterrupts" visibility="public" bodyCondition="_hHfOkDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hHfOkDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hHfOkTMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hHiR4DMZEeOJXOt_T56pGQ" name="value" type="_g691gDMZEeOJXOt_T56pGQ"/>
+      <ownedParameter xmi:id="_hHkHEDMZEeOJXOt_T56pGQ" name="set_nInternalInterrupts" type="_g8UgYDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hHlVMDMZEeOJXOt_T56pGQ" name="get_nExternalInterrupts" visibility="public" bodyCondition="_hHsC4DMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hHsC4DMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hHsC4TMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hHt4EDMZEeOJXOt_T56pGQ" name="get_nExternalInterrupts" type="_g691gDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hHvtQDMZEeOJXOt_T56pGQ" name="set_nExternalInterrupts" visibility="public" bodyCondition="_hH2a8DMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hH2a8DMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hH2a8TMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hH6FUDMZEeOJXOt_T56pGQ" name="value" type="_g691gDMZEeOJXOt_T56pGQ"/>
+      <ownedParameter xmi:id="_hH8hkDMZEeOJXOt_T56pGQ" name="set_nExternalInterrupts" type="_g8UgYDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hH9vsDMZEeOJXOt_T56pGQ" name="get_Date" visibility="public" bodyCondition="_hIFEcDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hIFEcDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hIFrgDMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hIHgsDMZEeOJXOt_T56pGQ" name="get_Date" type="_hFwwQDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hIIu0DMZEeOJXOt_T56pGQ" name="set_Date" visibility="public" bodyCondition="_hIQDkDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hIQDkDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hIQDkTMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hITt8DMZEeOJXOt_T56pGQ" name="value" type="_hFwwQDMZEeOJXOt_T56pGQ"/>
+      <ownedParameter xmi:id="_hIVjIDMZEeOJXOt_T56pGQ" name="set_Date" type="_g8UgYDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_hFwwQDMZEeOJXOt_T56pGQ" name="DateTime"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_hIbpwDMZEeOJXOt_T56pGQ" name="ToDoSheet" clientDependency="_hOKeUDMZEeOJXOt_T56pGQ">
+    <ownedAttribute xmi:id="_hIpFIDMZEeOJXOt_T56pGQ" name="Date" visibility="private" type="_hFwwQDMZEeOJXOt_T56pGQ"/>
+    <ownedAttribute xmi:id="_hIsIcDMZEeOJXOt_T56pGQ" name="nDoneTasks" visibility="private" type="_g691gDMZEeOJXOt_T56pGQ"/>
+    <ownedAttribute xmi:id="_hIzdMDMZEeOJXOt_T56pGQ" name="nToDoTasks" visibility="private" type="_g691gDMZEeOJXOt_T56pGQ"/>
+    <ownedAttribute xmi:id="_hI7ZADMZEeOJXOt_T56pGQ" name="nCompletedPoms" visibility="private" type="_g691gDMZEeOJXOt_T56pGQ"/>
+    <ownedOperation xmi:id="_hJRXQDMZEeOJXOt_T56pGQ" name="get_Date" visibility="public" bodyCondition="_hJSlYDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hJSlYDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hJTMcDMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hJUakDMZEeOJXOt_T56pGQ" name="get_Date" type="_hFwwQDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hJVosDMZEeOJXOt_T56pGQ" name="set_Date" visibility="public" bodyCondition="_hJXd4DMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hJXd4DMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hJXd4TMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hJahMDMZEeOJXOt_T56pGQ" name="value" type="_hFwwQDMZEeOJXOt_T56pGQ"/>
+      <ownedParameter xmi:id="_hJcWYDMZEeOJXOt_T56pGQ" name="set_Date" type="_g8UgYDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hJeLkDMZEeOJXOt_T56pGQ" name="get_ToDoList" visibility="public" bodyCondition="_hJk5QDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hJk5QDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hJlgUDMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hJnVgDMZEeOJXOt_T56pGQ" name="get_ToDoList" type="_hJn8kDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hJpKsDMZEeOJXOt_T56pGQ" name="set_ToDoList" visibility="public" bodyCondition="_hJwfcDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hJwfcDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hJwfcTMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hJ0J0DMZEeOJXOt_T56pGQ" name="value" type="_hJn8kDMZEeOJXOt_T56pGQ"/>
+      <ownedParameter xmi:id="_hJ1X8DMZEeOJXOt_T56pGQ" name="set_ToDoList" type="_g8UgYDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hJ2mEDMZEeOJXOt_T56pGQ" name="get_nDoneTasks" visibility="public" bodyCondition="_hJ960DMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hJ960DMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hJ960TMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hJ_wADMZEeOJXOt_T56pGQ" name="get_nDoneTasks" type="_g691gDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hKA-IDMZEeOJXOt_T56pGQ" name="set_nDoneTasks" visibility="public" bodyCondition="_hKI58DMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hKI58DMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hKI58TMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hKMkUDMZEeOJXOt_T56pGQ" name="value" type="_g691gDMZEeOJXOt_T56pGQ"/>
+      <ownedParameter xmi:id="_hKOZgDMZEeOJXOt_T56pGQ" name="set_nDoneTasks" type="_g8UgYDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hKPnoDMZEeOJXOt_T56pGQ" name="get_nToDoTasks" visibility="public" bodyCondition="_hKW8YDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hKW8YDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hKW8YTMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hKYxkDMZEeOJXOt_T56pGQ" name="get_nToDoTasks" type="_g691gDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hKamwDMZEeOJXOt_T56pGQ" name="set_nToDoTasks" visibility="public" bodyCondition="_hKhUcDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hKhUcDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hKh7gDMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hKll4DMZEeOJXOt_T56pGQ" name="value" type="_g691gDMZEeOJXOt_T56pGQ"/>
+      <ownedParameter xmi:id="_hKm0ADMZEeOJXOt_T56pGQ" name="set_nToDoTasks" type="_g8UgYDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hKoCIDMZEeOJXOt_T56pGQ" name="get_nCompletedPoms" visibility="public" bodyCondition="_hKpQQDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hKpQQDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hKp3UDMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hKsTkDMZEeOJXOt_T56pGQ" name="get_nCompletedPoms" type="_g691gDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hKthsDMZEeOJXOt_T56pGQ" name="set_nCompletedPoms" visibility="public" bodyCondition="_hKv98DMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hKv98DMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hKv98TMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hKzBQDMZEeOJXOt_T56pGQ" name="value" type="_g691gDMZEeOJXOt_T56pGQ"/>
+      <ownedParameter xmi:id="_hK1dgDMZEeOJXOt_T56pGQ" name="set_nCompletedPoms" type="_g8UgYDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_hJn8kDMZEeOJXOt_T56pGQ" name="Array&lt;ToDoTask>"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_hK69EDMZEeOJXOt_T56pGQ" name="Timer">
+    <ownedAttribute xmi:id="_hLIYcDMZEeOJXOt_T56pGQ" name="toDoTask" visibility="public" type="_g9BD8DMZEeOJXOt_T56pGQ"/>
+    <ownedAttribute xmi:id="_hLQUQDMZEeOJXOt_T56pGQ" name="TimeCounter" visibility="private" type="_hFwwQDMZEeOJXOt_T56pGQ"/>
+    <ownedAttribute xmi:id="_hLXpADMZEeOJXOt_T56pGQ" name="Status" visibility="private" type="_g9j2gDMZEeOJXOt_T56pGQ"/>
+    <ownedAttribute xmi:id="_hLgL4DMZEeOJXOt_T56pGQ" name="nPomodoringTime" visibility="private" type="_g691gDMZEeOJXOt_T56pGQ"/>
+    <ownedAttribute xmi:id="_hLngoDMZEeOJXOt_T56pGQ" name="nBreakingTime" visibility="private" type="_g691gDMZEeOJXOt_T56pGQ"/>
+    <ownedOperation xmi:id="_hMBwUDMZEeOJXOt_T56pGQ" name="get_TimeCounter" visibility="public" bodyCondition="_hMJFEDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hMJFEDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hMJFETMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hMK6QDMZEeOJXOt_T56pGQ" name="get_TimeCounter" type="_hFwwQDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hMMvcDMZEeOJXOt_T56pGQ" name="set_TimeCounter" visibility="public" bodyCondition="_hMUEMDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hMUEMDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hMUEMTMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hMXukDMZEeOJXOt_T56pGQ" name="value" type="_hFwwQDMZEeOJXOt_T56pGQ"/>
+      <ownedParameter xmi:id="_hMZjwDMZEeOJXOt_T56pGQ" name="set_TimeCounter" type="_g8UgYDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hMax4DMZEeOJXOt_T56pGQ" name="get_Status" visibility="public" bodyCondition="_hMitsDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hMitsDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hMitsTMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hMki4DMZEeOJXOt_T56pGQ" name="get_Status" type="_g9j2gDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hMlxADMZEeOJXOt_T56pGQ" name="set_Status" visibility="public" bodyCondition="_hMtFwDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hMtFwDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hMts0DMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hMwwIDMZEeOJXOt_T56pGQ" name="value" type="_g9j2gDMZEeOJXOt_T56pGQ"/>
+      <ownedParameter xmi:id="_hMzMYDMZEeOJXOt_T56pGQ" name="set_Status" type="_g8UgYDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hM0agDMZEeOJXOt_T56pGQ" name="get_nPomodoringTime" visibility="public" bodyCondition="_hM7IMDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hM7IMDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hM7vQDMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hM9kcDMZEeOJXOt_T56pGQ" name="get_nPomodoringTime" type="_g691gDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hM-ykDMZEeOJXOt_T56pGQ" name="set_nPomodoringTime" visibility="public" bodyCondition="_hNGHUDMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hNGHUDMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hNGHUTMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hNJxsDMZEeOJXOt_T56pGQ" name="value" type="_g691gDMZEeOJXOt_T56pGQ"/>
+      <ownedParameter xmi:id="_hNK_0DMZEeOJXOt_T56pGQ" name="set_nPomodoringTime" type="_g8UgYDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hNM1ADMZEeOJXOt_T56pGQ" name="get_nBreakingTime" visibility="public" bodyCondition="_hNUw0DMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hNUw0DMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hNUw0TMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hNWmADMZEeOJXOt_T56pGQ" name="get_nBreakingTime" type="_g691gDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_hNZCQDMZEeOJXOt_T56pGQ" name="set_nBreakingTime" visibility="public" bodyCondition="_hNfv8DMZEeOJXOt_T56pGQ">
+      <ownedRule xmi:id="_hNfv8DMZEeOJXOt_T56pGQ">
+        <specification xmi:type="uml:LiteralString" xmi:id="_hNgXADMZEeOJXOt_T56pGQ" name="TemplateBody" value=";"/>
+      </ownedRule>
+      <ownedParameter xmi:id="_hNizQDMZEeOJXOt_T56pGQ" name="value" type="_g691gDMZEeOJXOt_T56pGQ"/>
+      <ownedParameter xmi:id="_hNkBYDMZEeOJXOt_T56pGQ" name="set_nBreakingTime" type="_g8UgYDMZEeOJXOt_T56pGQ" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_hOGz8DMZEeOJXOt_T56pGQ" name="Dependency_1" supplier="_hIbpwDMZEeOJXOt_T56pGQ" client="_hFC-kDMZEeOJXOt_T56pGQ"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_hOKeUDMZEeOJXOt_T56pGQ" name="Dependency_2" supplier="_hCmukDMZEeOJXOt_T56pGQ" client="_hIbpwDMZEeOJXOt_T56pGQ"/>
+</uml:Model>

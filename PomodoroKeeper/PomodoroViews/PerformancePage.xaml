@@ -1,0 +1,102 @@
+﻿<common:LayoutAwarePage
+    x:Name="pageRoot"
+    x:Class="PomodoroKeeper.PomodoroViews.PerformancePage"
+    DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PomodoroKeeper.PomodoroViews"
+    xmlns:common="using:PomodoroKeeper.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+
+        <!--
+            Collection of grouped items displayed by this page, bound to a subset
+            of the complete item list because items in groups cannot be virtualized
+        -->
+        <CollectionViewSource
+            x:Name="groupedItemsViewSource"
+            Source="{Binding Groups}"
+            IsSourceGrouped="true"
+            ItemsPath="TopItems"/>
+
+        <!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
+        <x:String x:Key="AppName">My Application</x:String>
+    </Page.Resources>
+
+    <!--
+        This grid acts as a root panel for the page that defines two rows:
+        * Row 0 contains the back button and page title
+        * Row 1 contains the rest of the page layout
+    -->
+    <Grid Style="{StaticResource LayoutRootStyle}">
+    	<Grid.ColumnDefinitions>
+    		<ColumnDefinition Width="61*"/>
+    		<ColumnDefinition Width="622*"/>
+    	</Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Horizontal scrolling grid used in most view states -->
+        <Grid Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+            	<ColumnDefinition Width="Auto"/>
+            	<ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+        	<Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
+        	<TextBlock x:Name="pageTitle" Grid.Column="1" IsHitTestVisible="false" Style="{StaticResource PageHeaderTextStyle}">
+        		<Run Text="My "/>
+        		<Run Text="Performance in October 2013"/>
+        	</TextBlock>
+        </Grid>
+        <ScrollViewer x:Name="PerformanceScrollViewer" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Margin="10,10,0,0" 
+			HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden"
+			VerticalScrollMode="Disabled" IsScrollInertiaEnabled="True" 
+			HorizontalScrollMode="Enabled" ZoomMode="Disabled" Width="1224">
+        	<StackPanel Height="600" Width="1400" Orientation="Horizontal">
+        		<Image Source="ms-appx:///Assets/lineandarea.jpg" Height="358" Width="338" Margin="0,0,450,0"/>
+        		<Image Source="ms-appx:///Assets/multipleaxes.jpg" Height="358" Width="338" Margin="-300,0,0,0"/>
+        		<Image Source="ms-appx:///Assets/lineandarea.jpg" Height="358" Width="338" Margin="150,0,450,0"/>
+        	</StackPanel>
+        </ScrollViewer>
+
+        <!-- Back button and page title -->
+
+        <VisualStateManager.VisualStateGroups>
+
+            <!-- Visual states reflect the application's view state -->
+            <VisualStateGroup x:Name="ApplicationViewStates">
+                <VisualState x:Name="FullScreenLandscape"/>
+                <VisualState x:Name="Filled"/>
+
+                <!-- The entire page respects the narrower 100-pixel margin convention for portrait -->
+                <VisualState x:Name="FullScreenPortrait">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PortraitBackButtonStyle}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+
+                <!--
+                    The back button and title have different styles when snapped, and the list representation is substituted
+                    for the grid displayed in all other view states
+                -->
+                <VisualState x:Name="Snapped">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedBackButtonStyle}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="pageTitle" Storyboard.TargetProperty="Style">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedPageHeaderTextStyle}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</common:LayoutAwarePage>
