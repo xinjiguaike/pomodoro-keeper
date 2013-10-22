@@ -99,17 +99,7 @@ namespace PomodoroKeeper.Model
            ;
         }
 
-        public ObservableCollection<string> PomsList;
-
-        //public void InitializPomsList()
-        //{ 
-        //   PomsList = new ObservableCollection<string>();
-        //   for (int i = 0; i < EstimatedPoms; i++)
-        //   {
-        //       PomsList.Add("Green");
-        //   }
-               
-        //}
+        public ObservableCollection<string> PomsList{ get; set; }
 
         public ToDoTask(int nEstimatedPoms)
         {

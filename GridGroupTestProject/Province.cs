@@ -17,6 +17,7 @@ namespace GridGroupTestProject
     {
         public string ProvinceName { set; get; }
         public ObservableCollection<City> Cities { set; get; }
+        public string FirstCity { set; get; }
     }
 
     

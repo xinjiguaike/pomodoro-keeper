@@ -28,16 +28,16 @@ namespace PomodoroKeeper.PomodoroViews
         static ToDoPage()
         {
             PomToDoSheet = new ToDoSheet() { Date = DateTime.Today};
-            PomToDoSheet.AddToDoTask(new ToDoTask(3) { Description = "Go To Market", TaskColor = "Red"});
-            PomToDoSheet.AddToDoTask(new ToDoTask(4) { Description = "Clean House", TaskColor = "Green"});
-            PomToDoSheet.AddToDoTask(new ToDoTask(3) { Description = "Make a Plan"});
-            PomToDoSheet.AddUnplannedTask(new ToDoTask(2) { Description = "Drink Coffee", TaskColor = "Blue"});
+            PomToDoSheet.AddToDoTask(new ToDoTask(3) { Description = "Go To Market", TaskColor = "Red", InternalInterrupts = 5});
+            PomToDoSheet.AddToDoTask(new ToDoTask(5) { Description = "Clean House", TaskColor = "Green"});
+            PomToDoSheet.AddToDoTask(new ToDoTask(0) { Description = "Make a Plan"});
+            PomToDoSheet.AddUnplannedTask(new ToDoTask(5) { Description = "Drink Coffee", TaskColor = "Blue"});
 
-            PomToDoSheet.AddToDoTask(new ToDoTask(3) { Description = "Make a Plan 2"});
+            PomToDoSheet.AddToDoTask(new ToDoTask(5) { Description = "Make a Plan 2"});
             PomToDoSheet.AddUnplannedTask(new ToDoTask(2) { Description = "Drink Coffee 2", TaskColor = "Yellow"});
             PomToDoSheet.AddToDoTask(new ToDoTask(3) { Description = "Make a Plan 3"});
             PomToDoSheet.AddUnplannedTask(new ToDoTask(4) { Description = "Drink Coffee 3", TaskColor = "Pink"});
-            PomToDoSheet.AddToDoTask(new ToDoTask(2) { Description = "Make a Plan 4" });
+            PomToDoSheet.AddToDoTask(new ToDoTask(5) { Description = "Make a Plan 4" });
             PomToDoSheet.AddUnplannedTask(new ToDoTask(3) { Description = "Drink Coffee 4", TaskColor = "Gray"});
         }
 
@@ -46,12 +46,6 @@ namespace PomodoroKeeper.PomodoroViews
             this.InitializeComponent();
             lvToDo.ItemsSource = PomToDoSheet.ToDoTaskList;
             lvUrgent.ItemsSource = PomToDoSheet.UnplannedTaskList;
-            ObservableCollection<string> testPomsList = new ObservableCollection<string>();
-           // lvUrgent.Child.Add()
-            for (int i = 0; i < 3; i++)
-            {
-                testPomsList.Add("Green");
-            }
         }
 
         /// <summary>

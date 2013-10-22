@@ -40,10 +40,28 @@ namespace GridGroupTestProject
             ctyJiLin.Add(new City() { CityID = 7, CityName = "TongHua" });
             ctyJiLin.Add(new City() { CityID = 8, CityName = "SiPing" });
 
+            ObservableCollection<City> ctyAAA = new ObservableCollection<City>();
+            ctyAAA.Add(new City() { CityID = 6, CityName = "ChangChun" });
+            ctyAAA.Add(new City() { CityID = 7, CityName = "TongHua" });
+            ctyAAA.Add(new City() { CityID = 8, CityName = "SiPing" });
+
+            ObservableCollection<City> ctyBBB = new ObservableCollection<City>();
+            ctyBBB.Add(new City() { CityID = 6, CityName = "ChangChun" });
+            ctyBBB.Add(new City() { CityID = 7, CityName = "TongHua" });
+            ctyBBB.Add(new City() { CityID = 8, CityName = "SiPing" });
+
+            ObservableCollection<City> ctyCCC = new ObservableCollection<City>();
+            ctyCCC.Add(new City() { CityID = 6, CityName = "ChangChun" });
+            ctyCCC.Add(new City() { CityID = 7, CityName = "TongHua" });
+            ctyCCC.Add(new City() { CityID = 8, CityName = "SiPing" });
+
 
             list.Add(new Province() { ProvinceName = "HeNan", Cities = ctyHeNan });
             list.Add(new Province() { ProvinceName = "ZheJiang", Cities = ctyZheJiang });
             list.Add(new Province() { ProvinceName = "JiLin", Cities = ctyJiLin });
+            list.Add(new Province() { ProvinceName = "AAA", Cities = ctyAAA });
+            //list.Add(new Province() { ProvinceName = "BBB", Cities = ctyBBB });
+            //list.Add(new Province() { ProvinceName = "CCC", Cities = ctyCCC });
             
         }
 

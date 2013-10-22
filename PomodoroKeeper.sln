@@ -5,8 +5,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PomodoroKeeper", "PomodoroK
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controls.Toolkit", "Controls.Toolkit\Controls.Toolkit\Controls.Toolkit.csproj", "{FBD446BC-6CE1-4C44-A420-3607E199683C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GridGroupTestProject", "GridGroupTestProject\GridGroupTestProject.csproj", "{DE32E3BE-7A44-4DC5-82B0-DBA0888A8671}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,30 +57,6 @@ Global
 		{FBD446BC-6CE1-4C44-A420-3607E199683C}.Release|x64.Build.0 = Release|x64
 		{FBD446BC-6CE1-4C44-A420-3607E199683C}.Release|x86.ActiveCfg = Release|x86
 		{FBD446BC-6CE1-4C44-A420-3607E199683C}.Release|x86.Build.0 = Release|x86
-		{DE32E3BE-7A44-4DC5-82B0-DBA0888A8671}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DE32E3BE-7A44-4DC5-82B0-DBA0888A8671}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DE32E3BE-7A44-4DC5-82B0-DBA0888A8671}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{DE32E3BE-7A44-4DC5-82B0-DBA0888A8671}.Debug|ARM.ActiveCfg = Debug|ARM
-		{DE32E3BE-7A44-4DC5-82B0-DBA0888A8671}.Debug|ARM.Build.0 = Debug|ARM
-		{DE32E3BE-7A44-4DC5-82B0-DBA0888A8671}.Debug|ARM.Deploy.0 = Debug|ARM
-		{DE32E3BE-7A44-4DC5-82B0-DBA0888A8671}.Debug|x64.ActiveCfg = Debug|x64
-		{DE32E3BE-7A44-4DC5-82B0-DBA0888A8671}.Debug|x64.Build.0 = Debug|x64
-		{DE32E3BE-7A44-4DC5-82B0-DBA0888A8671}.Debug|x64.Deploy.0 = Debug|x64
-		{DE32E3BE-7A44-4DC5-82B0-DBA0888A8671}.Debug|x86.ActiveCfg = Debug|x86
-		{DE32E3BE-7A44-4DC5-82B0-DBA0888A8671}.Debug|x86.Build.0 = Debug|x86
-		{DE32E3BE-7A44-4DC5-82B0-DBA0888A8671}.Debug|x86.Deploy.0 = Debug|x86
-		{DE32E3BE-7A44-4DC5-82B0-DBA0888A8671}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DE32E3BE-7A44-4DC5-82B0-DBA0888A8671}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DE32E3BE-7A44-4DC5-82B0-DBA0888A8671}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{DE32E3BE-7A44-4DC5-82B0-DBA0888A8671}.Release|ARM.ActiveCfg = Release|ARM
-		{DE32E3BE-7A44-4DC5-82B0-DBA0888A8671}.Release|ARM.Build.0 = Release|ARM
-		{DE32E3BE-7A44-4DC5-82B0-DBA0888A8671}.Release|ARM.Deploy.0 = Release|ARM
-		{DE32E3BE-7A44-4DC5-82B0-DBA0888A8671}.Release|x64.ActiveCfg = Release|x64
-		{DE32E3BE-7A44-4DC5-82B0-DBA0888A8671}.Release|x64.Build.0 = Release|x64
-		{DE32E3BE-7A44-4DC5-82B0-DBA0888A8671}.Release|x64.Deploy.0 = Release|x64
-		{DE32E3BE-7A44-4DC5-82B0-DBA0888A8671}.Release|x86.ActiveCfg = Release|x86
-		{DE32E3BE-7A44-4DC5-82B0-DBA0888A8671}.Release|x86.Build.0 = Release|x86
-		{DE32E3BE-7A44-4DC5-82B0-DBA0888A8671}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
