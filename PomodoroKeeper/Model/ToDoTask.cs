@@ -7,6 +7,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using Windows.Foundation;
@@ -23,81 +24,56 @@ using Windows.UI.Xaml.Navigation;
 
 namespace PomodoroKeeper.Model
 {
-    public class ToDoTask : InventoryTask
+    public class ToDoTask : InventoryTask, INotifyPropertyChanged
     {
-        
+        public int EstimatedPoms { get; set; }
 
-        public int EstimatedPoms
-        {
-            get
-           ;
-            set
-           ;
-        }
+        public string TaskColor { get; set; }
 
-        public string TaskColor
-        {
-            get
-           ;
-            set
-           ;
-        }
+        public bool IsDone { get; set; }
 
-        public bool IsDone
-        {
-            get
-           ;
-            set
-           ;
-        }
+        public bool IsSelected { get; set; }
 
-        public bool IsUnplanned
-        {
-            get
-           ;
-            set
-           ;
-        }
+        public bool IsUnplanned { get; set; }
 
-        public int CompletedPomos
-        {
-            get
-           ;
-            set
-           ;
-        }
+        public int CompletedPomos { get; set; }
 
-        public int AbandonedPoms
-        {
-            get
-           ;
-            set
-           ;
-        }
+        public int AbandonedPoms { get; set; }
 
+        private int _internalInterrupts;
         public int InternalInterrupts
         {
-            get
-           ;
+            get { return _internalInterrupts; }
             set
-           ;
+            {
+                _internalInterrupts = value;
+                OnPropertyChanged("InternalInterrupts");
+            }
         }
 
-        public int ExternalInterruputs
+        private int _externalInterrupts;
+        public int ExternalInterrupts
         {
-            get
-           ;
+            get { return _externalInterrupts; }
             set
-           ;
+            {
+                _externalInterrupts = value;
+                OnPropertyChanged("ExternalInterrupts");
+            }
         }
 
-        public int Progress
+        private double _taskOpacity;
+        public double TaskOpacity
         {
-            get
-           ;
+            get { return _taskOpacity; }
             set
-           ;
+            {
+                _taskOpacity = value;
+                OnPropertyChanged("TaskOpacity");
+            }
         }
+
+        public int Progress { get; set; }
 
         public ObservableCollection<string> PomsList{ get; set; }
 
@@ -109,6 +85,14 @@ namespace PomodoroKeeper.Model
             {
                 PomsList.Add("Green");
             }
+            TaskOpacity = 1;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     } 
 }

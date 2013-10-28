@@ -24,8 +24,16 @@ namespace PomodoroKeeper.Model
 {
     public class Timer: INotifyPropertyChanged
     {
-        public ToDoTask TaskToDo;
-        
+        public ToDoTask CurrentTask;
+
+        private DateTime TimeCounter { get; set; }
+
+        private Enum Status { get; set; }
+
+        private int PomodoringTime { get; set; }
+
+        private int BreakingTime { get; set; }
+
         private string _strHour;
         private string _strMinute;
         private string _strStartContent;
@@ -60,39 +68,18 @@ namespace PomodoroKeeper.Model
             }
         }
 
-        private DateTime TimeCounter
+        private bool _bWaiting;
+        public bool IsWaiting
         {
-            get
-           ;
+
+            get { return _bWaiting; }
             set
-           ;
+            {
+                _bWaiting = value;
+                OnPropertyChanged("IsWaiting");
+            }
         }
-
-        private Enum Status
-        {
-            get
-           ;
-            set
-           ;
-        }
-
-        private int PomodoringTime
-        {
-            get
-           ;
-            set
-           ;
-        }
-
-        private int BreakingTime
-        {
-            get
-           ;
-            set
-           ;
-        }
-
-
+   
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)
         {

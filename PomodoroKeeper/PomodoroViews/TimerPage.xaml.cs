@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using PomodoroKeeper.Model;
 using Windows.UI.Popups;
+using System.ComponentModel;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
 
@@ -23,7 +24,17 @@ namespace PomodoroKeeper.PomodoroViews
     /// </summary>
     public sealed partial class TimerPage : PomodoroKeeper.Common.LayoutAwarePage
     {
-        private static Timer pomTimer = new Timer() { TimerHour="25", TimerMinute="00"}; 
+        //private static ToDoTask _currentTask;
+        public static ToDoTask CurrentTask;
+
+        //public static event PropertyChangedEventHandler PropertyChanged;
+        //public static void OnPropertyChanged(string propertyName)
+        //{
+        //    if (PropertyChanged != null)
+        //        PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        //}
+
+        private static Timer pomTimer = new Timer() { TimerHour="25", TimerMinute="00", IsWaiting = true}; 
         private static int nHour = 25;
         private static int nMinute = 0;
         private static DispatcherTimer dspTimer;
@@ -33,7 +44,7 @@ namespace PomodoroKeeper.PomodoroViews
         {
             dspTimer = new DispatcherTimer();
             dspTimer.Interval = TimeSpan.FromSeconds(1);
-            dspTimer.Tick += new EventHandler<object>(Dispatcher_OnTick);
+            dspTimer.Tick += Dispatcher_OnTick;
         }
         
         public TimerPage()
@@ -66,9 +77,30 @@ namespace PomodoroKeeper.PomodoroViews
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            //tbExternal.Text = "{Binding (Application.Current as App).CurrentTask.InternalInterrupts}";
+            //tbInternal.Text = "{Binding (Application.Current as App).CurrentTask.ExternalInterrupts}";
+            //Binding bdInternal = new Binding();
+            //bdInternal.Source = (Application.Current as App).CurrentTask.InternalInterrupts;
+            //tbInternal.SetBinding(TextBlock.TextProperty, bdInternal);
+
+            //Binding bdExternal = new Binding();
+            //bdExternal.Source = (Application.Current as App).CurrentTask.ExternalInterrupts;
+            //tbExternal.SetBinding(TextBlock.TextProperty, bdExternal);
+
+            //Binding bdTitle = new Binding();
+            //bdTitle.Source = (Application.Current as App).CurrentTask.Description;
+            //tbTitle.SetBinding(TextBlock.TextProperty, bdTitle);
+
             tbHour.DataContext = pomTimer;
             tbMinute.DataContext = pomTimer;
             btnStartPom.DataContext = pomTimer;
+            spPageTitle.DataContext = pomTimer;
+            spWaitingPageTitle.DataContext = pomTimer;
+            gdPomdoring.DataContext = pomTimer;
+            gdWaiting.DataContext = pomTimer;
+            tbInternal.DataContext = CurrentTask;
+            tbExternal.DataContext = CurrentTask;
+            tbTitle.DataContext = CurrentTask;
 
             if (pomTimer.TimerStartContent == null)
                 pomTimer.TimerStartContent = "Start Pomodoro";
@@ -81,11 +113,20 @@ namespace PomodoroKeeper.PomodoroViews
 
             if (pomTimer.TimerStartContent.Equals("Start Pomodoro"))
             {
+                pomTimer.IsWaiting = false;
+
+                CurrentTask = (Application.Current as App).SelectedTask;
+                tbInternal.DataContext = CurrentTask;
+                tbExternal.DataContext = CurrentTask;
+                tbTitle.DataContext = CurrentTask;
+
                 dspTimer.Start();
                 pomTimer.TimerStartContent = "Abandon Pomodoro";
             }
             else if (pomTimer.TimerStartContent.Equals("Abandon Pomodoro"))
             {
+                CurrentTask.TaskOpacity = 1;
+                pomTimer.IsWaiting = true;
                 //meTick.Stop();
                 dspTimer.Stop();
                 pomTimer.TimerStartContent = "Start Pomodoro";
@@ -102,14 +143,25 @@ namespace PomodoroKeeper.PomodoroViews
             //meTick.Play();
             if(nHour == 0 && nMinute == 0)
             {
+                pomTimer.IsWaiting = true;
                 //meTick.Stop();
                 pomTimer.TimerStartContent = "Start Pomodoro";
+                CurrentTask.TaskOpacity = 1;
                 dspTimer.Stop();
                 MessageDialog msgDialog = new MessageDialog("It's time to break!");
                 msgDialog.ShowAsync();
             }
             else
             {
+                if (nMinute % 2 == 0)
+                { 
+                    CurrentTask.TaskOpacity = 0.5; 
+                }
+                else
+                { 
+                    CurrentTask.TaskOpacity = 1; 
+                }
+
                 if (nMinute == 0)
                 {
                     nMinute = 59;
@@ -134,12 +186,12 @@ namespace PomodoroKeeper.PomodoroViews
 
         private void Internal_Click(object sender, RoutedEventArgs e)
         {
-            
+            CurrentTask.InternalInterrupts += 1;
         }
 
         private void External_Click(object sender, RoutedEventArgs e)
         {
-
+            CurrentTask.ExternalInterrupts += 1;
         }
     }
 }

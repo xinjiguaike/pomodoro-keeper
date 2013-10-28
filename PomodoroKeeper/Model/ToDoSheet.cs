@@ -122,37 +122,12 @@ namespace PomodoroKeeper.Model
         }
         #endregion
 
-        public DateTime Date
-        {
-            get
-           ;
-            set
-           ;
-        }
+        public DateTime Date { get; set; }
 
-        private int NumDoneTasks
-        {
-            get
-           ;
-            set
-           ;
-        }
+        private int NumDoneTasks { get; set; }
 
-        private int NumToDoTasks
-        {
-            get
-           ;
-            set
-           ;
-        }
+        private int NumToDoTasks { get; set; }
 
-        private int CompletedPoms
-        {
-            get
-           ;
-            set
-           ;
-        }
-
+        private int CompletedPoms { get; set; }
     } 
 }

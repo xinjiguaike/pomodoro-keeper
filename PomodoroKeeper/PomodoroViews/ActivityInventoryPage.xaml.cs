@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using Windows.Foundation;
@@ -11,7 +12,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
+using PomodoroKeeper.Model;
+using Controls.Toolkit;
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
 
 namespace PomodoroKeeper.PomodoroViews
@@ -21,10 +23,24 @@ namespace PomodoroKeeper.PomodoroViews
     /// </summary>
     public sealed partial class ActivityInventoryPage : PomodoroKeeper.Common.LayoutAwarePage
     {
+        public static ObservableCollection<InventoryTask> InventoryList;
+
+        static ActivityInventoryPage()
+        {
+            InventoryList = new ObservableCollection<InventoryTask>();
+            InventoryList.Add(new InventoryTask() { Description = "Go Shopping" });
+            InventoryList.Add(new InventoryTask() { Description = "Play Billiards" });
+            InventoryList.Add(new InventoryTask() { Description = "Watch the football game" });
+        }
+
         public ActivityInventoryPage()
         {
             this.InitializeComponent();
+            lvInventory.ItemsSource = InventoryList;
+            //ctbNewTask.OkButtonClick += ctbNewTask_OkButtonClick;
         }
+
+        
 
        /// <summary>
         /// Populates the page with content passed during navigation.  Any saved state is also
@@ -53,5 +69,16 @@ namespace PomodoroKeeper.PomodoroViews
 		{
             App.NavigateToPage(typeof(ToDoPage));
 		}
+
+        private void NewTask_Click(object sender, RoutedEventArgs e)
+        {
+            ctbNewTask.IsOpen = true;
+        }
+
+        private void ctbNewTask_OkButtonClick(object sender, RoutedEventArgs e)
+        {
+            InventoryList.Add(new InventoryTask() { Description = ctbNewTask.Text });
+            ctbNewTask.Text = null;
+        }
     }
 }

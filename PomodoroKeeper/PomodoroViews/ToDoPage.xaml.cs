@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using PomodoroKeeper.Model;
 using System.Collections.ObjectModel;
+using Windows.UI.Popups;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
 
@@ -24,28 +25,11 @@ namespace PomodoroKeeper.PomodoroViews
     /// </summary>
     public sealed partial class ToDoPage : PomodoroKeeper.Common.LayoutAwarePage
     {
-        public static ToDoSheet PomToDoSheet;
-        static ToDoPage()
-        {
-            PomToDoSheet = new ToDoSheet() { Date = DateTime.Today};
-            PomToDoSheet.AddToDoTask(new ToDoTask(3) { Description = "Go To Market", TaskColor = "Red", InternalInterrupts = 5});
-            PomToDoSheet.AddToDoTask(new ToDoTask(5) { Description = "Clean House", TaskColor = "Green"});
-            PomToDoSheet.AddToDoTask(new ToDoTask(0) { Description = "Make a Plan"});
-            PomToDoSheet.AddUnplannedTask(new ToDoTask(5) { Description = "Drink Coffee", TaskColor = "Blue"});
-
-            PomToDoSheet.AddToDoTask(new ToDoTask(5) { Description = "Make a Plan 2"});
-            PomToDoSheet.AddUnplannedTask(new ToDoTask(2) { Description = "Drink Coffee 2", TaskColor = "Yellow"});
-            PomToDoSheet.AddToDoTask(new ToDoTask(3) { Description = "Make a Plan 3"});
-            PomToDoSheet.AddUnplannedTask(new ToDoTask(4) { Description = "Drink Coffee 3", TaskColor = "Pink"});
-            PomToDoSheet.AddToDoTask(new ToDoTask(5) { Description = "Make a Plan 4" });
-            PomToDoSheet.AddUnplannedTask(new ToDoTask(3) { Description = "Drink Coffee 4", TaskColor = "Gray"});
-        }
-
         public ToDoPage()
         {
             this.InitializeComponent();
-            lvToDo.ItemsSource = PomToDoSheet.ToDoTaskList;
-            lvUrgent.ItemsSource = PomToDoSheet.UnplannedTaskList;
+            lvToDo.ItemsSource = (Application.Current as App).PomToDoSheet.ToDoTaskList;
+            lvUrgent.ItemsSource = (Application.Current as App).PomToDoSheet.UnplannedTaskList;
         }
 
         /// <summary>
@@ -81,6 +65,59 @@ namespace PomodoroKeeper.PomodoroViews
         {
             Frame rootFrame = Window.Current.Content as Frame;
             rootFrame.Navigate(typeof(PerformancePage));
+        }
+
+        private void onDoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            Frame rootFrame = Window.Current.Content as Frame;
+            rootFrame.Navigate(typeof(TimerPage));
+        }
+
+        private void onTapped(object sender, TappedRoutedEventArgs e)
+        {
+            //Frame rootFrame = Window.Current.Content as Frame;
+           // rootFrame.Navigate(typeof(TimerPage));
+        }
+
+        private void onDrop(object sender, DragEventArgs e)
+        {
+            MessageDialog msgDlg = new MessageDialog("Drop");
+            msgDlg.ShowAsync();
+        }
+
+        private void onDragLeave(object sender, DragEventArgs e)
+        {
+            MessageDialog msgDlg = new MessageDialog("DragLeave");
+            msgDlg.ShowAsync();
+        }
+
+        private void onDragOver(object sender, DragEventArgs e)
+        {
+            MessageDialog msgDlg = new MessageDialog("DragOver");
+            msgDlg.ShowAsync();
+        }
+
+        private void onDragEnter(object sender, DragEventArgs e)
+        {
+            MessageDialog msgDlg = new MessageDialog("DragEnter");
+            msgDlg.ShowAsync();
+        }
+
+        //private void onRightTapped(object sender, RightTappedRoutedEventArgs e)
+        //{
+        //    MessageDialog msgDlg = new MessageDialog("RightTapped");
+        //    msgDlg.ShowAsync();
+        //}
+
+        private void onHolding(object sender, HoldingRoutedEventArgs e)
+        {
+            MessageDialog msgDlg = new MessageDialog("Holding");
+            msgDlg.ShowAsync();
+        }
+
+        private void OnItemClick(object sender, ItemClickEventArgs e)
+        {
+            (Application.Current as App).SelectedTask = lvToDo.SelectedItem as ToDoTask;// e.ClickedItem as ToDoTask;
         }
     }
 }

@@ -18,7 +18,7 @@
         
         <DataTemplate x:Key="ToDoListItemTemplate">
             <StackPanel Orientation="Horizontal">
-                <StackPanel Orientation="Horizontal" Width ="750" Background="{Binding TaskColor}">
+                <StackPanel Orientation="Horizontal" Width ="750" Background="{Binding TaskColor}" Opacity="{Binding TaskOpacity}">
                     <TextBlock Text="{Binding Description}" Foreground="White" TextWrapping="Wrap" FontSize="22" HorizontalAlignment="Left"/>
                 </StackPanel>
                 <GridView SelectionMode="None" Background="Gold" IsEnabled="True" ItemTemplate="{StaticResource PomsListItemTemplate}" ItemsSource="{Binding PomsList}" Width="250" Height="50" 
@@ -29,7 +29,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock HorizontalAlignment="Center" TextAlignment="Center" Text="{Binding InternalInterrupts}" Foreground="White" TextWrapping="Wrap" FontSize="22" VerticalAlignment="Center"/>
-                    <TextBlock HorizontalAlignment="Center" TextAlignment="Center" Grid.Column="1" Text="{Binding ExternalInterruputs}" Foreground="White" TextWrapping="Wrap" FontSize="22" VerticalAlignment="Center"/>
+                    <TextBlock HorizontalAlignment="Center" TextAlignment="Center" Grid.Column="1" Text="{Binding ExternalInterrupts}" Foreground="White" TextWrapping="Wrap" FontSize="22" VerticalAlignment="Center"/>
                 </Grid>
             </StackPanel>
         </DataTemplate>
@@ -62,7 +62,7 @@
         * Row 0 contains the back button and page title
         * Row 1 contains the rest of the page layout
     -->
-    <Grid Style="{StaticResource LayoutRootStyle}">
+    <Grid Style="{StaticResource LayoutRootStyle}" Background="YellowGreen">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="105"/>
             <ColumnDefinition Width="*"/>
@@ -108,7 +108,7 @@
                     <TextBlock Grid.Column="2" Foreground="#FF0000" HorizontalAlignment="Left" VerticalAlignment="Bottom" TextAlignment="Left" Text="Internal" FontSize="17" FontStyle="Italic" FontWeight="Bold"/>
                     <TextBlock Grid.Column="3" Foreground="#FF0000" HorizontalAlignment="Left" VerticalAlignment="Bottom" TextAlignment="Left" Text="External" FontSize="17" FontStyle="Italic" FontWeight="Bold"/>
                 </Grid>
-                <ListView x:Name="lvToDo" ItemTemplate="{StaticResource ToDoListItemTemplate}" SelectionMode="Single" IsTapEnabled="True" HorizontalAlignment="Left" Height="360" VerticalAlignment="Top" Width="1220"/>
+                <ListView x:Name="lvToDo" ItemClick="OnItemClick" IsItemClickEnabled="True" Holding="onHolding" DragLeave="onDragLeave" DragOver="onDragOver" DragEnter="onDragEnter" Drop="onDrop" Tapped="onTapped" DoubleTapped="onDoubleTapped" ItemTemplate="{StaticResource ToDoListItemTemplate}" SelectionMode="Single" IsTapEnabled="True" HorizontalAlignment="Left" Height="360" VerticalAlignment="Top" Width="1220"/>
             </StackPanel>
             <StackPanel Grid.Row="1">
                 <Grid>

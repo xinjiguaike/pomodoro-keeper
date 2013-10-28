@@ -16,6 +16,8 @@ using Windows.UI.Xaml.Navigation;
 using PomodoroKeeper.ControlsSample;
 using PomodoroKeeper.Views;
 using PomodoroKeeper.PomodoroViews;
+using PomodoroKeeper.Model;
+using System.ComponentModel;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
 
@@ -24,14 +26,50 @@ namespace PomodoroKeeper
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
-    sealed partial class App : Application
+    sealed partial class App : Application//, INotifyPropertyChanged
     {
+        /// Global Data for all pages to share.
+        public ToDoSheet PomToDoSheet;
+        public ToDoTask SelectedTask;
+        //private double _currentTask2;
+        //public double CurrentTask2
+        //{
+        //    get { return _currentTask2; }
+        //    set
+        //    {
+        //        _currentTask2 = value;
+        //        OnPropertyChanged("CurrentTask2");
+        //    }
+        //}
+
+        //public event PropertyChangedEventHandler PropertyChanged;
+        //public void OnPropertyChanged(string propertyName)
+        //{
+        //    if (PropertyChanged != null)
+        //        PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        //}
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
         public App()
         {
+            // Initializes the global data.
+            PomToDoSheet = new ToDoSheet() { Date = DateTime.Today };
+            PomToDoSheet.AddToDoTask(new ToDoTask(3) { Description = "Go To Market", TaskColor = "Red" });
+            PomToDoSheet.AddToDoTask(new ToDoTask(5) { Description = "Clean House", TaskColor = "Green" });
+            PomToDoSheet.AddToDoTask(new ToDoTask(2) { Description = "Make a Plan" });
+            PomToDoSheet.AddUnplannedTask(new ToDoTask(4) { Description = "Drink Coffee", TaskColor = "Blue" });
+
+            PomToDoSheet.AddUnplannedTask(new ToDoTask(2) { Description = "Play Basketball", TaskColor = "Yellow" });
+            PomToDoSheet.AddToDoTask(new ToDoTask(1) { Description = "Probation Plan Review" });
+            PomToDoSheet.AddUnplannedTask(new ToDoTask(4) { Description = "Have a look", TaskColor = "Pink" });
+            PomToDoSheet.AddToDoTask(new ToDoTask(5) { Description = "Apply for the citizen card" });
+            PomToDoSheet.AddUnplannedTask(new ToDoTask(3) { Description = "Go to sleep", TaskColor = "Gray" });
+
+            //CurrentTask = new ToDoTask(0);
+
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }

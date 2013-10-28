@@ -22,22 +22,25 @@ using Windows.UI.Xaml.Navigation;
 
 namespace PomodoroKeeper.Model
 {
-    public class InventoryTask
+    public class InventoryTask : INotifyPropertyChanged
     {
+        private string _strDescription;
         public string Description
         {
-            get
-           ;
+            get { return _strDescription; }
             set
-           ;
+            {
+                _strDescription = value;
+                OnPropertyChanged("Description");
+            }
         }
+        public int Priority { get; set; }
 
-        public int Priority
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged(string propertyName)
         {
-            get
-           ;
-            set
-           ;
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

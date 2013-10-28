@@ -23,61 +23,19 @@ namespace PomodoroKeeper.Model
 {
     public class DailyPerformance
     {
-        private int StartedPoms
-        {
-            get
-           ;
-            set
-           ;
-        }
+        private int StartedPoms { get; set; }
 
-        private int EstimatedPoms
-        {
-            get
-           ;
-            set
-           ;
-        }
+        private int EstimatedPoms { get; set; }
 
-        private int CompletedPoms
-        {
-            get
-           ;
-            set
-           ;
-        }
+        private int CompletedPoms { get; set; }
 
-        private int AbandonedPoms
-        {
-            get
-           ;
-            set
-           ;
-        }
+        private int AbandonedPoms { get; set; }
 
-        private int InternalInterrupts
-        {
-            get
-           ;
-            set
-           ;
-        }
+        private int InternalInterrupts { get; set; }
 
-        private int ExternalInterrupts
-        {
-            get
-           ;
-            set
-           ;
-        }
+        private int ExternalInterrupts { get; set; }
 
-        private DateTime Date
-        {
-            get
-           ;
-            set
-           ;
-        }
+        private DateTime Date { get; set; }
 
     }
 }

@@ -25,22 +25,12 @@ namespace PomodoroKeeper.Model
     {
         private const int MaxCount = 100;
       
-        private int TaskCount
-        {
-            get
-           ;
-            set
-           ;
-        }
+        private int TaskCount { get; set; }
 
-        private string Title
-        {
-            get
-           ;
-            set
-           ;
-        }
+        private string Title { get; set; }
 
+        //===============InventoryTaskList template==========
+        #region 
         public List<InventoryTask> InventoryTaskList;
 
         /// <pdGenerated>default getter</pdGenerated>
@@ -85,7 +75,8 @@ namespace PomodoroKeeper.Model
         {
             if (InventoryTaskList != null)
                 InventoryTaskList.Clear();
-        }           
+        }
+        #endregion
     }
 }
     
