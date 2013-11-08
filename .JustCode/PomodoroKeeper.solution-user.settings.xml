@@ -2582,6 +2582,21 @@
         <IgnoredElement>
           <TextualIdentifier>16951339804740767487</TextualIdentifier>
         </IgnoredElement>
+        <IgnoredElement>
+          <TextualIdentifier>13045917801486443147</TextualIdentifier>
+        </IgnoredElement>
+        <IgnoredElement>
+          <TextualIdentifier>3019477860337450061</TextualIdentifier>
+        </IgnoredElement>
+        <IgnoredElement>
+          <TextualIdentifier>4357607571140902337</TextualIdentifier>
+        </IgnoredElement>
+        <IgnoredElement>
+          <TextualIdentifier>3333186164311473583</TextualIdentifier>
+        </IgnoredElement>
+        <IgnoredElement>
+          <TextualIdentifier>1301611129542397012</TextualIdentifier>
+        </IgnoredElement>
       </FilePath>
       <FilePath>
         <FileRelativePath>PomodoroKeeper/Properties/AssemblyInfo.cs</FileRelativePath>

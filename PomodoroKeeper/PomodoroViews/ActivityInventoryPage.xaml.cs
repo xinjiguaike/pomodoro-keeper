@@ -37,7 +37,6 @@ namespace PomodoroKeeper.PomodoroViews
         {
             this.InitializeComponent();
             lvInventory.ItemsSource = InventoryList;
-            //ctbNewTask.OkButtonClick += ctbNewTask_OkButtonClick;
         }
 
         
@@ -65,8 +64,21 @@ namespace PomodoroKeeper.PomodoroViews
         {
         }
 		
-		protected void GoToToday(object sender, RoutedEventArgs e)
+		private void GoToToday(object sender, RoutedEventArgs e)
 		{
+            ObservableCollection<InventoryTask> listSeclected = new ObservableCollection<InventoryTask>();
+            foreach (InventoryTask selectedTask in lvInventory.SelectedItems)
+            {
+                listSeclected.Add(selectedTask);
+            }
+
+            foreach (InventoryTask inventoryTask in listSeclected)
+            {
+                ToDoTask newToDoTask = new ToDoTask(3) {Description = inventoryTask.Description, Priority = inventoryTask.Priority };
+                (Application.Current as App).PomToDoSheet.AddToDoTask(newToDoTask);
+                InventoryList.Remove(inventoryTask);
+            }
+            
             App.NavigateToPage(typeof(ToDoPage));
 		}
 
@@ -75,10 +87,11 @@ namespace PomodoroKeeper.PomodoroViews
             ctbNewTask.IsOpen = true;
         }
 
-        private void ctbNewTask_OkButtonClick(object sender, RoutedEventArgs e)
+        private void OnNewTask_OkButtonClick(object sender, RoutedEventArgs e)
         {
             InventoryList.Add(new InventoryTask() { Description = ctbNewTask.Text });
             ctbNewTask.Text = null;
+            
         }
     }
 }

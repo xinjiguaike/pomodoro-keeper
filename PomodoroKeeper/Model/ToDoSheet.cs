@@ -7,6 +7,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using Windows.Foundation;
@@ -22,10 +23,20 @@ using Windows.UI.Xaml.Navigation;
 
 namespace PomodoroKeeper.Model
 {
-    public class ToDoSheet
+    public class ToDoSheet: INotifyPropertyChanged
     {
         public ObservableCollection<ToDoTask> ToDoTaskList;
         public ObservableCollection<ToDoTask> UnplannedTaskList;
+        private ToDoTask _selectedTask;
+        public ToDoTask SelectedTask
+        {
+            get { return _selectedTask;}
+            set
+            {
+                _selectedTask = value;
+                OnPropertyChanged("SelectedTask");
+            }
+        }
 
         //========= ToDoTask List==========
         #region
@@ -129,5 +140,18 @@ namespace PomodoroKeeper.Model
         private int NumToDoTasks { get; set; }
 
         private int CompletedPoms { get; set; }
+
+        public ToDoSheet()
+        {
+            ToDoTaskList = new ObservableCollection<ToDoTask>();
+            UnplannedTaskList = new ObservableCollection<ToDoTask>();
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
     } 
 }

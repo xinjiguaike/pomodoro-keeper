@@ -34,10 +34,10 @@
             </Grid.ColumnDefinitions>
             <Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
             <StackPanel x:Name="spWaitingPageTitle" Orientation="Horizontal" Grid.Column="1" Visibility="{Binding IsWaiting, Converter={StaticResource converter1}}">
-                <TextBlock Text="Waiting" Style="{StaticResource PageHeaderTextStyle}" Foreground="White"/>
+                <TextBlock x:Uid="waitingTB" Style="{StaticResource PageHeaderTextStyle}" Foreground="White"/>
             </StackPanel>
             <StackPanel x:Name="spPageTitle" Orientation="Horizontal" Grid.Column="1" Visibility="{Binding IsWaiting, Converter={StaticResource converter2}}">
-                <TextBlock Text="Working: " Style="{StaticResource PageHeaderTextStyle}" Foreground="White"/>
+                <TextBlock x:Uid="workingTB" Style="{StaticResource PageHeaderTextStyle}" Foreground="White"/>
                 <TextBlock x:Name="tbTitle" Text="{Binding Description}" Style="{StaticResource PageHeaderTextStyle}" Foreground="#FF0000"/>
             </StackPanel>
             
@@ -56,26 +56,26 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="10*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock x:Name="tbHour" Grid.Column="0" Margin="0,0,0,10" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding TimerHour}" FontSize="120" FontWeight="Bold" FontFamily="Segoe UI" Foreground="White"/>
+                <TextBlock x:Name="tbHour" Grid.Column="0" Margin="0,0,0,10" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding TimerMinute}" FontSize="120" FontWeight="Bold" FontFamily="Segoe UI" Foreground="White"/>
                 <TextBlock Grid.Column="1" HorizontalAlignment="Center" Margin="0,0,0,30" TextAlignment="Center" VerticalAlignment="Center" Text=":" FontSize="120" FontWeight="Bold" FontFamily="Segoe UI" Foreground="White"/>
-                <TextBlock x:Name="tbMinute" Grid.Column="2" Margin="0,0,0,10" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding TimerMinute}" FontSize="120" FontWeight="Bold" FontFamily="Segoe UI" Foreground="White"/>
+                <TextBlock x:Name="tbMinute" Grid.Column="2" Margin="0,0,0,10" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding TimerSecond}" FontSize="120" FontWeight="Bold" FontFamily="Segoe UI" Foreground="White"/>
             </Grid>
-            <Grid HorizontalAlignment="Center" Height="150" Width="500" VerticalAlignment="Top" Margin="0,200,0,0">
+            <Grid x:Name="gdInterrupts" Visibility="{Binding IsBreaking, Converter={StaticResource converter2}}" HorizontalAlignment="Center" Height="150" Width="500" VerticalAlignment="Top" Margin="0,200,0,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="80"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="60" Width="400" VerticalAlignment="Top" Margin="0,25,0,0" Background="Transparent">
+                <StackPanel x:Name="spInterrupts" Orientation="Horizontal" HorizontalAlignment="Center" Height="60" Width="400" VerticalAlignment="Top" Margin="0,25,0,0" Background="Transparent">
                     <TextBlock x:Name="tbInternal" Text="{Binding InternalInterrupts}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="55,0,0,10" FontSize="30" FontWeight="Bold" FontFamily="Segoe UI" TextAlignment="Center" Foreground="White"/>
-                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="55,0,0,10" TextWrapping="Wrap" Text="Interrupts" FontSize="30" FontWeight="Bold" FontFamily="Segoe UI" TextAlignment="Center" Foreground="White"/>
+                    <TextBlock x:Uid="interruptTB" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="55,0,0,10" TextWrapping="Wrap" FontSize="30" FontWeight="Bold" FontFamily="Segoe UI" TextAlignment="Center" Foreground="White"/>
                     <TextBlock x:Name="tbExternal" Text="{Binding ExternalInterrupts}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="60,0,0,10" FontSize="30" FontWeight="Bold" FontFamily="Segoe UI" TextAlignment="Center" Foreground="White"/>
                 </StackPanel>
-                <Button x:Name="btnInternal" Click="Internal_Click"  Grid.Row="1" Content="Internal" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Style="{StaticResource Sweet-RecommandedButton}" Height="60" Width="200"/>
-                <Button x:Name="btnExternal" Click="External_Click" Grid.Row="1" Content="External" FontSize="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Style="{StaticResource Sweet-RecommandedButton}" Height="60" Width="200"/>
+                <Button x:Name="btnInternal" x:Uid="internalBtn" Click="Internal_Click"  Grid.Row="1" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Style="{StaticResource Sweet-RecommandedButton}" Height="60" Width="200"/>
+                <Button x:Name="btnExternal" x:Uid="externalBtn" Click="External_Click" Grid.Row="1" FontSize="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Style="{StaticResource Sweet-RecommandedButton}" Height="60" Width="200"/>
             </Grid>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="200" Width="500" VerticalAlignment="Top" Margin="0,400,0,0">
-                <ProgressBar x:Name="PomingProgressbar" Background="White" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="380" Value="60" Foreground="Magenta" Style="{StaticResource Sweet-ProgressBar}"/>
-                <ProgressBar x:Name="BreakingProgressbar" Background="White" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="100" Value="40" Foreground="Magenta" Margin="20,0,0,10" Style="{StaticResource Sweet-ProgressBar}"/>
+                <ProgressBar x:Name="pbarPomingProgressbar" Background="White" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="380" Value="{Binding PomProgress}" Foreground="Magenta" Style="{StaticResource Sweet-ProgressBar}"/>
+                <ProgressBar x:Name="pbarBreakingProgressbar" Background="White" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="100" Value="{Binding BreakProgress}" Foreground="Magenta" Margin="20,0,0,10" Style="{StaticResource Sweet-ProgressBar}"/>
             </StackPanel>
         </Grid>
 

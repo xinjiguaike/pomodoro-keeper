@@ -34,27 +34,27 @@ namespace PomodoroKeeper.Model
 
         private int BreakingTime { get; set; }
 
-        private string _strHour;
         private string _strMinute;
+        private string _strSecond;
         private string _strStartContent;
 
-        public string TimerHour
-        {
-            
-            get { return _strHour;}
-            set 
-            {
-                _strHour = value;
-                OnPropertyChanged("TimerHour");
-            }
-        }
         public string TimerMinute
         {
+
             get { return _strMinute; }
-            set
+            set 
             {
                 _strMinute = value;
                 OnPropertyChanged("TimerMinute");
+            }
+        }
+        public string TimerSecond
+        {
+            get { return _strSecond; }
+            set
+            {
+                _strSecond = value;
+                OnPropertyChanged("TimerSecond");
             }
         }
 
@@ -69,6 +69,10 @@ namespace PomodoroKeeper.Model
         }
 
         private bool _bWaiting;
+        private bool _bBreaking;
+        private double _pomProgress;
+        private double _breakProgress;
+
         public bool IsWaiting
         {
 
@@ -79,13 +83,50 @@ namespace PomodoroKeeper.Model
                 OnPropertyChanged("IsWaiting");
             }
         }
-   
+        public bool IsBreaking
+        {
+
+            get { return _bBreaking; }
+            set
+            {
+                _bBreaking = value;
+                OnPropertyChanged("IsBreaking");
+            }
+        }
+
+        public double PomProgress
+        {
+            get { return _pomProgress; }
+            set
+            {
+                _pomProgress = value;
+                OnPropertyChanged("PomProgress");
+            }
+        }
+        public double BreakProgress
+        {
+            get { return _breakProgress; }
+            set
+            {
+                _breakProgress = value;
+                OnPropertyChanged("BreakProgress");
+            }
+        }
+        
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null)
                 handler(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public Timer()
+        {
+            PomProgress = 0;
+            BreakProgress = 0;
+            IsBreaking = false;
+            IsWaiting = true;
         }
     } 
 }

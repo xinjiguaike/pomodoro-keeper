@@ -17,8 +17,29 @@
         </DataTemplate>
     </Page.Resources>
 
+    <common:LayoutAwarePage.BottomAppBar>
+        <AppBar Margin="0" Background="#FF0000">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal">
+                    <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{StaticResource EditAppBarButtonStyle}"/>
+                    <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{StaticResource AddAppBarButtonStyle}" Click="NewTask_Click"/>
+                    <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{StaticResource RemoveAppBarButtonStyle}"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
+                    <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{StaticResource SaveAppBarButtonStyle}" AutomationProperties.Name="Timer"/>
+                    <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{StaticResource MoreAppBarButtonStyle}" AutomationProperties.Name="Performance"/>
+                    <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{StaticResource SettingsAppBarButtonStyle}"/>
+                </StackPanel>
+            </Grid>
+        </AppBar>
+    </common:LayoutAwarePage.BottomAppBar>
+    
     <Grid>
-        <Toolkit:ContentTextBox x:Name="ctbNewTask" Padding="0" OkButtonClick="ctbNewTask_OkButtonClick">
+        <Toolkit:ContentTextBox x:Name="ctbNewTask" Padding="0" OkButtonClick="OnNewTask_OkButtonClick">
             <StackPanel Orientation="Horizontal" Background="Gold" >
                 <Button Background="#FF375899" BorderThickness="0" Padding="0" Width="50" Height="50" Margin="0,10,20,0" >
                     <Image Height="45" Source="ms-appx:///Assets/Sample/IconFacebook.png" Stretch="Fill" Width="46"/>
@@ -64,9 +85,8 @@
                 </StackPanel>
             </Grid>
             <ListView x:Name="lvInventory" Grid.Row="1" Grid.Column="1" Height="500" ItemTemplate="{StaticResource InventoryListItemTemplate}" SelectionMode="Multiple" IsTapEnabled="True" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1050"/>
-            <Button Content="Move To Today" Grid.Column="1" HorizontalAlignment="Center" Margin="762,510,278,0" Grid.Row="1" VerticalAlignment="Top" Width="212" Height="50" FontSize="24" Click="GoToToday"/>
-            <Button Content="Add One Item" Click="NewTask_Click" Grid.Column="1" HorizontalAlignment="Center" Margin="254,510,786,0" Grid.Row="1" VerticalAlignment="Top" Width="212" Height="50" FontSize="24"/>
-
+            <Button Content="Move To ToDoList" Grid.Column="1" HorizontalAlignment="Center" Margin="762,510,278,0" Grid.Row="1" VerticalAlignment="Top" Width="212" Height="50" FontSize="24" Click="GoToToday"/>
+            <Button Content="Add One Item" Grid.Column="1" HorizontalAlignment="Center" Margin="254,510,786,0" Grid.Row="1" VerticalAlignment="Top" Width="212" Height="50" FontSize="24"/>
             <VisualStateManager.VisualStateGroups>
 
                 <!-- Visual states reflect the application's view state -->

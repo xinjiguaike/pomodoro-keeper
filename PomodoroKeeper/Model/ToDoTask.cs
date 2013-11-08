@@ -28,19 +28,52 @@ namespace PomodoroKeeper.Model
     {
         public int EstimatedPoms { get; set; }
 
-        public string TaskColor { get; set; }
-
-        public bool IsDone { get; set; }
-
-        public bool IsSelected { get; set; }
-
         public bool IsUnplanned { get; set; }
 
         public int CompletedPomos { get; set; }
 
         public int AbandonedPoms { get; set; }
 
+        public int RunningPomIndex { get; set; }
+
         private int _internalInterrupts;
+        private int _externalInterrupts;
+        private double _taskOpacity;
+        private bool _bDone;
+        private string _taskColor;
+        private bool _bSelected;
+
+        public bool IsSelected
+        {
+            get { return _bSelected; }
+            set
+            {
+                _bSelected = value;
+                OnPropertyChanged("IsSelected");
+            }
+        }
+
+        public string TaskColor
+        {
+            get { return _taskColor; }
+            set
+            {
+                _taskColor = value;
+                OnPropertyChanged("TaskColor");
+            }
+        }
+
+
+        public bool IsDone
+        {
+            get { return _bDone; }
+            set
+            {
+                _bDone = value;
+                OnPropertyChanged("IsDone");
+            }
+        }
+
         public int InternalInterrupts
         {
             get { return _internalInterrupts; }
@@ -50,8 +83,6 @@ namespace PomodoroKeeper.Model
                 OnPropertyChanged("InternalInterrupts");
             }
         }
-
-        private int _externalInterrupts;
         public int ExternalInterrupts
         {
             get { return _externalInterrupts; }
@@ -61,8 +92,7 @@ namespace PomodoroKeeper.Model
                 OnPropertyChanged("ExternalInterrupts");
             }
         }
-
-        private double _taskOpacity;
+   
         public double TaskOpacity
         {
             get { return _taskOpacity; }
@@ -72,9 +102,7 @@ namespace PomodoroKeeper.Model
                 OnPropertyChanged("TaskOpacity");
             }
         }
-
-        public int Progress { get; set; }
-
+        
         public ObservableCollection<string> PomsList{ get; set; }
 
         public ToDoTask(int nEstimatedPoms)
@@ -83,16 +111,9 @@ namespace PomodoroKeeper.Model
             PomsList = new ObservableCollection<string>();
             for (int i = 0; i < EstimatedPoms; i++)
             {
-                PomsList.Add("Green");
+                PomsList.Add("White");
             }
             TaskOpacity = 1;
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     } 
 }

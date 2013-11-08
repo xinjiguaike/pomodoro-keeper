@@ -6,22 +6,34 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:PomodoroKeeper.PomodoroViews"
     xmlns:common="using:PomodoroKeeper.Common"
+    xmlns:Toolkit="using:Controls.Toolkit"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
     <Page.Resources>
+        <common:BooleanToVisibilityConverter x:Key="BoolToVisibleConverter"/>
+        <common:BooleanToVisibilityConverterReverse x:Key="BoolToVisibleReverseConverter"/>
+        <common:TaskToBooleanConverter x:Key="TaskToBoolConverter"/>
+        <!--<Storyboard x:Name="sbPaintLine">
+            <DoubleAnimation Storyboard.TargetName="stProgress" Storyboard.TargetProperty="ScaleX" From="1" To="3" Duration="00:00:02">
+            </DoubleAnimation>
+        </Storyboard>-->
+        <Style x:Key="listviewItemStyle" TargetType="ListViewItem">
+            <Setter Property="Background" Value="YellowGreen"/>
+        </Style>
         <DataTemplate x:Key="PomsListItemTemplate">
-            <!--<Ellipse Height="30" Width="30" Fill="{Binding}" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>-->
-            <ProgressBar x:Name="PomingProgressbar" Background="White" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,10,0,0" Height="20" Width="30" Value="60" Foreground="Green" Style="{StaticResource Sweet-ProgressBar}"/>
+            <Ellipse x:Name="PomingEllipse" Height="30" Width="30" Fill="{Binding}" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <!--<ProgressBar x:Name="PomingProgressbar" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,10,0,0" Height="20" Width="30" Value="60" Foreground="Green" Style="{StaticResource Sweet-ProgressBar}"/>-->
         </DataTemplate>
         
         <DataTemplate x:Key="ToDoListItemTemplate">
             <StackPanel Orientation="Horizontal">
-                <StackPanel Orientation="Horizontal" Width ="750" Background="{Binding TaskColor}" Opacity="{Binding TaskOpacity}">
-                    <TextBlock Text="{Binding Description}" Foreground="White" TextWrapping="Wrap" FontSize="22" HorizontalAlignment="Left"/>
-                </StackPanel>
-                <GridView SelectionMode="None" Background="Gold" IsEnabled="True" ItemTemplate="{StaticResource PomsListItemTemplate}" ItemsSource="{Binding PomsList}" Width="250" Height="50" 
+                <Grid ManipulationMode="TranslateX" ManipulationStarted="ListItem_ManipulationStarted" ManipulationDelta="ListItem_ManipulationDelta" ManipulationCompleted="ListItem_ManipulationCompleted" Width ="750" Background="{Binding TaskColor}" Opacity="{Binding TaskOpacity}">
+                    <TextBlock Text="{Binding Description}" HorizontalAlignment="Left" Foreground="White" FontSize="28" VerticalAlignment="Center" Margin="5,0,0,5"/>
+                    <Line x:Name="lineCompleted" X2="700" Stroke="Gray" StrokeThickness="2" HorizontalAlignment="Left"  Visibility="{Binding IsDone, Converter={StaticResource BoolToVisibleConverter}}" VerticalAlignment="Center"/>
+                </Grid> 
+                <GridView IsHitTestVisible="False" SelectionMode="None" Background="Transparent" IsEnabled="True" ItemTemplate="{StaticResource PomsListItemTemplate}" ItemsSource="{Binding PomsList}" Width="250" Height="50" 
                           Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                 <Grid Width="180" Height="50" Background="YellowGreen">
                     <Grid.ColumnDefinitions>
@@ -31,30 +43,30 @@
                     <TextBlock HorizontalAlignment="Center" TextAlignment="Center" Text="{Binding InternalInterrupts}" Foreground="White" TextWrapping="Wrap" FontSize="22" VerticalAlignment="Center"/>
                     <TextBlock HorizontalAlignment="Center" TextAlignment="Center" Grid.Column="1" Text="{Binding ExternalInterrupts}" Foreground="White" TextWrapping="Wrap" FontSize="22" VerticalAlignment="Center"/>
                 </Grid>
+                <RadioButton IsChecked="{Binding IsSelected, Mode=TwoWay}" Checked="OnChecked" Margin="0,0,0,0" Visibility="{Binding IsDone, Converter={StaticResource BoolToVisibleReverseConverter}}" HorizontalAlignment="Left" VerticalAlignment="Center" GroupName="ToDoTaskList" Style="{StaticResource Sweet-RadioButton}"/>
             </StackPanel>
         </DataTemplate>
     </Page.Resources>
     
     <common:LayoutAwarePage.BottomAppBar>
-        <AppBar Margin="0">
+        <AppBar Margin="0" Background="#FF0000" BorderBrush="#FF0000">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Orientation="Horizontal">
-                    <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{StaticResource EditAppBarButtonStyle}"/>
-                    <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{StaticResource AddAppBarButtonStyle}"/>
-                    <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{StaticResource RemoveAppBarButtonStyle}"/>
+                    <Button x:Name="btnEdit" Click="OnEditTask" IsEnabled="{Binding SelectedTask, Converter={StaticResource TaskToBoolConverter}}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{StaticResource EditAppBarButtonStyle}"/>
+                    <Button Click="OnAddTask" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{StaticResource AddAppBarButtonStyle}"/>
+                    <Button x:Name="btnRemove" Click="OnRemoveTask" IsEnabled="{Binding SelectedTask, Converter={StaticResource TaskToBoolConverter}}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{StaticResource RemoveAppBarButtonStyle}"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
-                    <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{StaticResource DeleteAppBarButtonStyle}"/>
-                    <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{StaticResource SaveAppBarButtonStyle}" AutomationProperties.Name="Timer"  Click="GoToTimer"/>
+                    <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{StaticResource SaveAppBarButtonStyle}" Click="GoToTimer"/>
                     <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{StaticResource MoreAppBarButtonStyle}" AutomationProperties.Name="Performance" Click="GoToPerformance"/>
+                    <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{StaticResource SettingsAppBarButtonStyle}"/> 
                 </StackPanel>
             </Grid>
         </AppBar>
-
     </common:LayoutAwarePage.BottomAppBar>
 
     <!--
@@ -62,99 +74,141 @@
         * Row 0 contains the back button and page title
         * Row 1 contains the rest of the page layout
     -->
-    <Grid Style="{StaticResource LayoutRootStyle}" Background="YellowGreen">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="105"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="140"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <!-- Back button and page title -->
-        <Grid Margin="-10,0,10,0" Grid.ColumnSpan="2">
+    <Grid> 
+        <Grid Style="{StaticResource LayoutRootStyle}" Background="YellowGreen">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="105"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
-            <TextBlock x:Name="pageTitle" Grid.Column="1" Text="To Do List" Style="{StaticResource PageHeaderTextStyle}" Foreground="White"/>
-
-            <!--Pomodoro Logo-->
-            <StackPanel Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,50,0">
-                <Path Data="F1M393.9326,393.9219L393.9346,393.9729L338.7286,425.9729C336.3976,427.6559,333.5426,428.6589,330.4486,428.6589C322.6196,428.6589,316.2746,422.3149,316.2746,414.4859L316.2746,349.4859C316.2746,341.6579,322.6196,335.3129,330.4486,335.3129C333.5756,335.3129,336.4546,336.3379,338.7986,338.0529L392.0166,368.8689C397.0746,371.0329,400.6196,376.0529,400.6196,381.9019C400.6196,386.9789,397.9436,391.4179,393.9326,393.9219 M415.6046,379.6169C415.6096,379.4119,415.6196,379.2069,415.6196,378.9999C415.6196,368.5039,409.9116,359.3479,401.4346,354.4469L401.4116,354.4059L331.4776,314.0309L331.4636,314.0309C327.3266,311.6689,322.5406,310.3129,317.4356,310.3129C312.2596,310.3129,307.4126,311.7059,303.2376,314.1289L303.1706,314.1289L233.6536,354.2659L233.6326,354.3009C225.0146,359.1629,219.1916,368.3989,219.1916,378.9999C219.1916,379.2979,219.2046,379.5919,219.2136,379.8889L219.2136,458.7529C219.2046,459.0489,219.1916,459.3439,219.1916,459.6419C219.1916,470.5759,225.3866,480.0589,234.4546,484.7859L302.0706,523.8239C306.4986,526.6859,311.7706,528.3549,317.4356,528.3549C323.2966,528.3549,328.7426,526.5749,333.2616,523.5269L400.4266,484.7499C409.4566,480.0099,415.6196,470.5479,415.6196,459.6419C415.6196,459.4339,415.6096,459.2299,415.6046,459.0239z"
-                      Fill="#FFFF0000" Height="42" Canvas.Left="0" Stretch="Fill" Canvas.Top="0" Width="39" Margin="0"/>
-                <TextBlock TextWrapping="Wrap" Text="Pomodoro Keeper" Style="{StaticResource Font-D1}" VerticalAlignment="Bottom" Margin="10,0,0,0" Foreground="#FFFF0000"/>
-            </StackPanel>
-        </Grid>
-
-        <!-- Task List To Do -->
-        <Grid Grid.Row="1" Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="430"/>
+                <RowDefinition Height="140"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <StackPanel Margin="0,10,0,0">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="785"/>
-                        <ColumnDefinition Width="250"/>
-                        <ColumnDefinition Width="90"/>
-                        <ColumnDefinition Width="90"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Foreground="#FF0000" HorizontalAlignment="Left" TextAlignment="Left" Text="---To Do Today---" FontSize="30" FontStyle="Italic" FontWeight="Bold"/>
-                    <TextBlock Grid.Column="1" Foreground="#FF0000" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Left" Text="Task Progress" FontSize="17" FontStyle="Italic" FontWeight="Bold"/>
-                    <TextBlock Grid.Column="2" Foreground="#FF0000" HorizontalAlignment="Left" VerticalAlignment="Bottom" TextAlignment="Left" Text="Internal" FontSize="17" FontStyle="Italic" FontWeight="Bold"/>
-                    <TextBlock Grid.Column="3" Foreground="#FF0000" HorizontalAlignment="Left" VerticalAlignment="Bottom" TextAlignment="Left" Text="External" FontSize="17" FontStyle="Italic" FontWeight="Bold"/>
-                </Grid>
-                <ListView x:Name="lvToDo" ItemClick="OnItemClick" IsItemClickEnabled="True" Holding="onHolding" DragLeave="onDragLeave" DragOver="onDragOver" DragEnter="onDragEnter" Drop="onDrop" Tapped="onTapped" DoubleTapped="onDoubleTapped" ItemTemplate="{StaticResource ToDoListItemTemplate}" SelectionMode="Single" IsTapEnabled="True" HorizontalAlignment="Left" Height="360" VerticalAlignment="Top" Width="1220"/>
-            </StackPanel>
-            <StackPanel Grid.Row="1">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="785"/>
-                        <ColumnDefinition Width="250"/>
-                        <ColumnDefinition Width="90"/>
-                        <ColumnDefinition Width="90"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Foreground="#FF0000" HorizontalAlignment="Left" TextAlignment="Left" Text="---Unplanned &amp; Urgent---" FontSize="30" FontStyle="Italic" FontWeight="Bold"/>
-                    <TextBlock Grid.Column="1" Foreground="#FF0000" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Left" Text="Task Progress" FontSize="17" FontStyle="Italic" FontWeight="Bold"/>
-                    <TextBlock Grid.Column="2" Foreground="#FF0000" HorizontalAlignment="Left" VerticalAlignment="Bottom" TextAlignment="Left" Text="Internal" FontSize="17" FontStyle="Italic" FontWeight="Bold"/>
-                    <TextBlock Grid.Column="3" Foreground="#FF0000" HorizontalAlignment="Left" VerticalAlignment="Bottom" TextAlignment="Left" Text="External" FontSize="17" FontStyle="Italic" FontWeight="Bold"/>
-                </Grid>
-                <ListView x:Name="lvUrgent" ItemTemplate="{StaticResource ToDoListItemTemplate}" SelectionMode="Single" IsTapEnabled="True" HorizontalAlignment="Left" Height="180" VerticalAlignment="Top" Width="1220"/>
-            </StackPanel>
+
+            <!-- Back button and page title -->
+            <Grid Margin="-10,0,10,0" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
+                <TextBlock x:Name="pageTitle" Grid.Column="1" Text="To Do List" Style="{StaticResource PageHeaderTextStyle}"/>
+
+                <!--Pomodoro Logo-->
+                <StackPanel Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,50,0">
+                    <Path Data="F1M393.9326,393.9219L393.9346,393.9729L338.7286,425.9729C336.3976,427.6559,333.5426,428.6589,330.4486,428.6589C322.6196,428.6589,316.2746,422.3149,316.2746,414.4859L316.2746,349.4859C316.2746,341.6579,322.6196,335.3129,330.4486,335.3129C333.5756,335.3129,336.4546,336.3379,338.7986,338.0529L392.0166,368.8689C397.0746,371.0329,400.6196,376.0529,400.6196,381.9019C400.6196,386.9789,397.9436,391.4179,393.9326,393.9219 M415.6046,379.6169C415.6096,379.4119,415.6196,379.2069,415.6196,378.9999C415.6196,368.5039,409.9116,359.3479,401.4346,354.4469L401.4116,354.4059L331.4776,314.0309L331.4636,314.0309C327.3266,311.6689,322.5406,310.3129,317.4356,310.3129C312.2596,310.3129,307.4126,311.7059,303.2376,314.1289L303.1706,314.1289L233.6536,354.2659L233.6326,354.3009C225.0146,359.1629,219.1916,368.3989,219.1916,378.9999C219.1916,379.2979,219.2046,379.5919,219.2136,379.8889L219.2136,458.7529C219.2046,459.0489,219.1916,459.3439,219.1916,459.6419C219.1916,470.5759,225.3866,480.0589,234.4546,484.7859L302.0706,523.8239C306.4986,526.6859,311.7706,528.3549,317.4356,528.3549C323.2966,528.3549,328.7426,526.5749,333.2616,523.5269L400.4266,484.7499C409.4566,480.0099,415.6196,470.5479,415.6196,459.6419C415.6196,459.4339,415.6096,459.2299,415.6046,459.0239z"
+                      Fill="#FFFF0000" Height="42" Canvas.Left="0" Stretch="Fill" Canvas.Top="0" Width="39" Margin="0"/>
+                    <TextBlock TextWrapping="Wrap" Text="Pomodoro Keeper" Style="{StaticResource Font-D1}" VerticalAlignment="Bottom" Margin="10,0,0,0" Foreground="#FFFF0000"/>
+                </StackPanel>
+            </Grid>
+
+            <!-- Task List To Do -->
+            <Grid Grid.Row="1" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="430"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Margin="0,10,0,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="785"/>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="90"/>
+                            <ColumnDefinition Width="90"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Foreground="#FF0000" HorizontalAlignment="Left" TextAlignment="Left" Text="---To Do Today---" FontSize="30" FontStyle="Italic" FontWeight="Bold"/>
+                        <TextBlock Grid.Column="1" Foreground="#FF0000" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Left" Text="Task Progress" FontSize="17" FontStyle="Italic" FontWeight="Bold"/>
+                        <TextBlock Grid.Column="2" Foreground="#FF0000" HorizontalAlignment="Left" VerticalAlignment="Bottom" TextAlignment="Left" Text="Internal" FontSize="17" FontStyle="Italic" FontWeight="Bold"/>
+                        <TextBlock Grid.Column="3" Foreground="#FF0000" HorizontalAlignment="Left" VerticalAlignment="Bottom" TextAlignment="Left" Text="External" FontSize="17" FontStyle="Italic" FontWeight="Bold"/>
+                    </Grid>
+                    <ListView  x:Name="lvToDo" ItemClick="OnItemClick" IsItemClickEnabled="True" ItemContainerStyle="{StaticResource listviewItemStyle}" DoubleTapped="OnDoubleTapped" ItemTemplate="{StaticResource ToDoListItemTemplate}" SelectionMode="None" IsTapEnabled="True" HorizontalAlignment="Left" Height="360" VerticalAlignment="Top" Width="1260"/>
+                </StackPanel>
+                <StackPanel Grid.Row="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="785"/>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="90"/>
+                            <ColumnDefinition Width="90"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Foreground="#FF0000" HorizontalAlignment="Left" TextAlignment="Left" Text="---Unplanned &amp; Urgent---" FontSize="30" FontStyle="Italic" FontWeight="Bold"/>
+                        <TextBlock Grid.Column="1" Foreground="#FF0000" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Left" Text="Task Progress" FontSize="17" FontStyle="Italic" FontWeight="Bold"/>
+                        <TextBlock Grid.Column="2" Foreground="#FF0000" HorizontalAlignment="Left" VerticalAlignment="Bottom" TextAlignment="Left" Text="Internal" FontSize="17" FontStyle="Italic" FontWeight="Bold"/>
+                        <TextBlock Grid.Column="3" Foreground="#FF0000" HorizontalAlignment="Left" VerticalAlignment="Bottom" TextAlignment="Left" Text="External" FontSize="17" FontStyle="Italic" FontWeight="Bold"/>
+                    </Grid>
+                    <ListView x:Name="lvUrgent" ItemClick="OnItemClick" IsItemClickEnabled="True" ItemContainerStyle="{StaticResource listviewItemStyle}" DoubleTapped="OnDoubleTapped" ItemTemplate="{StaticResource ToDoListItemTemplate}" SelectionMode="None" IsTapEnabled="True" HorizontalAlignment="Left" Height="180" VerticalAlignment="Top" Width="1260"/>
+                </StackPanel>
+            </Grid>
+
+            <VisualStateManager.VisualStateGroups>
+
+                <!-- Visual states reflect the application's view state -->
+                <VisualStateGroup x:Name="ApplicationViewStates">
+                    <VisualState x:Name="FullScreenLandscape"/>
+                    <VisualState x:Name="Filled"/>
+
+                    <!-- The entire page respects the narrower 100-pixel margin convention for portrait -->
+                    <VisualState x:Name="FullScreenPortrait">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PortraitBackButtonStyle}"/>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+
+                    <!-- The back button and title have different styles when snapped -->
+                    <VisualState x:Name="Snapped">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedBackButtonStyle}"/>
+                            </ObjectAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="pageTitle" Storyboard.TargetProperty="Style">
+                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedPageHeaderTextStyle}"/>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
         </Grid>
-
-        <VisualStateManager.VisualStateGroups>
-
-            <!-- Visual states reflect the application's view state -->
-            <VisualStateGroup x:Name="ApplicationViewStates">
-                <VisualState x:Name="FullScreenLandscape"/>
-                <VisualState x:Name="Filled"/>
-
-                <!-- The entire page respects the narrower 100-pixel margin convention for portrait -->
-                <VisualState x:Name="FullScreenPortrait">
-                    <Storyboard>
-                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
-                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PortraitBackButtonStyle}"/>
-                        </ObjectAnimationUsingKeyFrames>
-                    </Storyboard>
-                </VisualState>
-
-                <!-- The back button and title have different styles when snapped -->
-                <VisualState x:Name="Snapped">
-                    <Storyboard>
-                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
-                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedBackButtonStyle}"/>
-                        </ObjectAnimationUsingKeyFrames>
-                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="pageTitle" Storyboard.TargetProperty="Style">
-                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedPageHeaderTextStyle}"/>
-                        </ObjectAnimationUsingKeyFrames>
-                    </Storyboard>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
+        <Grid x:Name="gdAddTask" Visibility="Collapsed">
+            <Grid Background="Black" Opacity="0.5"/>
+            <Grid Background="YellowGreen" Width="500" Height="500">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Toolkit:RangeSlider x:Name="rsPoms" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,-10" Width="300" Minimum="0" Maximum="5" Value="3" IsSingleSlider="True"/>
+                <TextBlock Grid.Row="1" Text="Pomodoros" Foreground="Red" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                
+                <StackPanel Grid.Row="2" Orientation="Horizontal" Width="300">
+                    <TextBox x:Name="tbDescription" TextWrapping="Wrap" Height="60" Width="300" GotFocus="OnTextGotFocus" Text="Write the Description Here" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Grid.Row="3" Orientation="Horizontal" Width="300">
+                    <CheckBox x:Name="cbUnplanned" Content="Unplanned" Foreground="White" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource Sweet-CheckBox}"/>
+                </StackPanel>
+                
+                <StackPanel Grid.Row="4" Orientation="Horizontal" Background="Red" Width="300">
+                    <RadioButton x:Name="rbHigh" FontSize="25" Content="High Priority" HorizontalAlignment="Center" GroupName="TaskPriority" Style="{StaticResource Sweet-RadioButton}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Row="5" Background="SandyBrown"  Width="300">
+                    <RadioButton x:Name="rbNormal" FontSize="25" Content="Normal Priority" IsChecked="True" HorizontalAlignment="Left" GroupName="TaskPriority" Style="{StaticResource Sweet-RadioButton}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Row="6" Background="Green" Width="300">
+                    <RadioButton x:Name="rbLow" Content="Low Priority" FontSize="25" HorizontalAlignment="Left" GroupName="TaskPriority" Style="{StaticResource Sweet-RadioButton}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Row="7" Width="300">
+                    <Button x:Name="btnOK" Content="OK" Click="AddTask_OKClick" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Bottom" Style="{StaticResource Sweet-RecommandedButton}" Height="50" Width="120" Margin="0,0,0,5"/>
+                    <Button x:Name="btnCancel" Content="Cancel" Click="AddTask_CancelClick" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Bottom" Style="{StaticResource Sweet-RecommandedButton}" Height="50" Width="120" Margin="60,0,0,5"/>
+                </StackPanel>
+                </Grid>
+        </Grid>
+        
     </Grid>
+    
 </common:LayoutAwarePage>
