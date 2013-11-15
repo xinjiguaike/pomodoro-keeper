@@ -17,45 +17,45 @@ using PomodoroKeeper.Views;
 
 namespace PomodoroKeeper.ControlsSample
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    public sealed partial class StepIndicatorTest : Page
-    {
-        public StepIndicatorTest()
-        {
-            this.InitializeComponent();
-            stepIndicator.SelectIndexChanged += stepIndicator_SelectIndexChanged;
-            
-        }
+	/// <summary>
+	/// An empty page that can be used on its own or navigated to within a Frame.
+	/// </summary>
+	public sealed partial class StepIndicatorTest : Page
+	{
+		public StepIndicatorTest()
+		{
+			this.InitializeComponent();
+			stepIndicator.SelectIndexChanged += stepIndicator_SelectIndexChanged;
+			
+		}
 
-        void stepIndicator_SelectIndexChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            int index =Convert.ToInt32( e.NewValue);
-        }
+		void stepIndicator_SelectIndexChanged(object sender, DependencyPropertyChangedEventArgs e)
+		{
+			int index =Convert.ToInt32( e.NewValue);
+		}
 
-        /// <summary>
-        /// Invoked when this page is about to be displayed in a Frame.
-        /// </summary>
-        /// <param name="e">Event data that describes how this page was reached.  The Parameter
-        /// property is typically used to configure the page.</param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-        }
+		/// <summary>
+		/// Invoked when this page is about to be displayed in a Frame.
+		/// </summary>
+		/// <param name="e">Event data that describes how this page was reached.  The Parameter
+		/// property is typically used to configure the page.</param>
+		protected override void OnNavigatedTo(NavigationEventArgs e)
+		{
+		}
 
-        private void backButton_Click(object sender, RoutedEventArgs e)
-        {
-            App.NavigateToPage(typeof(MainHub));
-        }
+		private void backButton_Click(object sender, RoutedEventArgs e)
+		{
+			App.NavigateToPage(typeof(MainHub));
+		}
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            stepIndicator.GotoBack();
-        }
+		private void Button_Click_1(object sender, RoutedEventArgs e)
+		{
+			stepIndicator.GotoBack();
+		}
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            stepIndicator.GotoNext();
-        }
-    }
+		private void Button_Click_2(object sender, RoutedEventArgs e)
+		{
+			stepIndicator.GotoNext();
+		}
+	}
 }

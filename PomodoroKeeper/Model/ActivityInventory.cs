@@ -21,62 +21,62 @@ using Windows.UI.Xaml.Navigation;
 
 namespace PomodoroKeeper.Model
 {
-    public class ActivityInventory
-    {
-        private const int MaxCount = 100;
-      
-        private int TaskCount { get; set; }
+	public class ActivityInventory
+	{
+		private const int MaxCount = 100;
 
-        private string Title { get; set; }
+		private int TaskCount { get; set; }
 
-        //===============InventoryTaskList template==========
-        #region 
-        public List<InventoryTask> InventoryTaskList;
+		private string Title { get; set; }
 
-        /// <pdGenerated>default getter</pdGenerated>
-        public List<InventoryTask> GetInventroyTask()
-        {
-            if (InventoryTaskList == null)
-                InventoryTaskList = new List<InventoryTask>();
-            return InventoryTaskList;
-        }
+		//===============InventoryTaskList template==========
+		#region 
+		public List<InventoryTask> InventoryTaskList;
 
-        /// <pdGenerated>default setter</pdGenerated>
-        public void SetInventroyTask(List<InventoryTask> newInventoryTaskList)
-        {
-            RemoveAllInventroyTask();
-            foreach (InventoryTask oInventoryTask in newInventoryTaskList)
-                AddInventroyTask(oInventoryTask);
-        }
+		/// <pdGenerated>default getter</pdGenerated>
+		public List<InventoryTask> GetInventroyTask()
+		{
+			if (InventoryTaskList == null)
+				InventoryTaskList = new List<InventoryTask>();
+			return InventoryTaskList;
+		}
 
-        /// <pdGenerated>default Add</pdGenerated>
-        public void AddInventroyTask(InventoryTask newInventoryTask)
-        {
-            if (newInventoryTask == null)
-                return;
-            if (this.InventoryTaskList == null)
-                this.InventoryTaskList = new List<InventoryTask>();
-            if (!this.InventoryTaskList.Contains(newInventoryTask))
-                this.InventoryTaskList.Add(newInventoryTask);
-        }
+		/// <pdGenerated>default setter</pdGenerated>
+		public void SetInventroyTask(List<InventoryTask> newInventoryTaskList)
+		{
+			RemoveAllInventroyTask();
+			foreach (InventoryTask oInventoryTask in newInventoryTaskList)
+				AddInventroyTask(oInventoryTask);
+		}
 
-        /// <pdGenerated>default Remove</pdGenerated>
-        public void RemoveInventroyTask(InventoryTask oldInventoryTask)
-        {
-            if (oldInventoryTask == null)
-                return;
-            if (this.InventoryTaskList != null)
-                if (this.InventoryTaskList.Contains(oldInventoryTask))
-                    this.InventoryTaskList.Remove(oldInventoryTask);
-        }
+		/// <pdGenerated>default Add</pdGenerated>
+		public void AddInventroyTask(InventoryTask newInventoryTask)
+		{
+			if (newInventoryTask == null)
+				return;
+			if (this.InventoryTaskList == null)
+				this.InventoryTaskList = new List<InventoryTask>();
+			if (!this.InventoryTaskList.Contains(newInventoryTask))
+				this.InventoryTaskList.Add(newInventoryTask);
+		}
 
-        /// <pdGenerated>default removeAll</pdGenerated>
-        public void RemoveAllInventroyTask()
-        {
-            if (InventoryTaskList != null)
-                InventoryTaskList.Clear();
-        }
-        #endregion
-    }
+		/// <pdGenerated>default Remove</pdGenerated>
+		public void RemoveInventroyTask(InventoryTask oldInventoryTask)
+		{
+			if (oldInventoryTask == null)
+				return;
+			if (this.InventoryTaskList != null)
+				if (this.InventoryTaskList.Contains(oldInventoryTask))
+					this.InventoryTaskList.Remove(oldInventoryTask);
+		}
+
+		/// <pdGenerated>default removeAll</pdGenerated>
+		public void RemoveAllInventroyTask()
+		{
+			if (InventoryTaskList != null)
+				InventoryTaskList.Clear();
+		}
+		#endregion
+	}
 }
-    
+	

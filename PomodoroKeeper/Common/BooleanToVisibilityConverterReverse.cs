@@ -13,18 +13,18 @@ using Windows.UI.Xaml.Data;
 
 namespace PomodoroKeeper.Common
 {
-    public sealed class BooleanToVisibilityConverterReverse : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, string language)
-        {
-            bool bModel = (bool)value;
-            return bModel ? Visibility.Collapsed : Visibility.Visible;
-        }
+	public sealed class BooleanToVisibilityConverterReverse : IValueConverter
+	{
+		public object Convert(object value, Type targetType, object parameter, string language)
+		{
+			bool bModel = (bool)value;
+			return bModel ? Visibility.Collapsed : Visibility.Visible;
+		}
 
 
-        public object ConvertBack(object value, Type targetType, object parameter, string language)
-        {
-            throw new NotImplementedException();
-        }
-    }
+		public object ConvertBack(object value, Type targetType, object parameter, string language)
+		{
+			throw new NotImplementedException();
+		}
+	}
 }

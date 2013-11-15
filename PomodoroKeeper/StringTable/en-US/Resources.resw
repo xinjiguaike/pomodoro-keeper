@@ -118,33 +118,33 @@
 	<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ABANDON_POM" xml:space="preserve">
-	<value>放弃蕃茄计时</value>
+	<value>Abandon Pomodoro</value>
   </data>
   <data name="BREAK_FINISH" xml:space="preserve">
-	<value>休息时间结束！</value>
+	<value>Break finished!</value>
   </data>
   <data name="externalBtn.Content" xml:space="preserve">
-	<value>外部</value>
+	<value>External</value>
   </data>
   <data name="internalBtn.Content" xml:space="preserve">
-	<value>内部</value>
+	<value>Internal</value>
   </data>
   <data name="interruptTB.Text" xml:space="preserve">
-	<value>干扰</value>
+	<value>Interrupts</value>
   </data>
   <data name="NO_TASK_WARNING" xml:space="preserve">
-	<value>在开始蕃茄计时之前你需要至少添加一个任务</value>
+	<value>You should add at least one task before starting!</value>
   </data>
   <data name="START_POM" xml:space="preserve">
-	<value>开始蕃茄计时</value>
+	<value>Start Pomodoro</value>
   </data>
   <data name="TIME_TO_BREAK" xml:space="preserve">
-	<value>是时候休息一会了！</value>
+	<value>It's time to have a break!</value>
   </data>
   <data name="waitingTB.Text" xml:space="preserve">
-	<value>正在等待</value>
+	<value>Waiting</value>
   </data>
   <data name="workingTB.Text" xml:space="preserve">
-	<value>正在做：</value>
+	<value>Working:</value>
   </data>
 </root>
