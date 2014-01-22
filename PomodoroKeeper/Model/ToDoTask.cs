@@ -65,48 +65,48 @@ namespace PomodoroKeeper.Model
 
 		public string TaskColor
 		{
-		    get { return _taskColor; }
-		    set
-		    {
+			get { return _taskColor; }
+			set
+			{
 				_taskColor = value;
 				OnPropertyChanged("TaskColor");
-		    }
+			}
 		}
 
 		public bool IsSelected
 		{
-		    get { return _bSelected; }
-		    set
-		    {
+			get { return _bSelected; }
+			set
+			{
 				_bSelected = value;
 				OnPropertyChanged("IsSelected");
-		    }
+			}
 		}
 		
 		public bool IsDone
 		{
-		    get { return _bDone; }
-		    set
-		    {
+			get { return _bDone; }
+			set
+			{
 				_bDone = value;
 				OnPropertyChanged("IsDone");
-		    }
+			}
 		}
 
 		public int InternalInterrupts
 		{
-		    get { return _internalInterrupts; }
-		    set
-		    {
+			get { return _internalInterrupts; }
+			set
+			{
 				_internalInterrupts = value;
 				OnPropertyChanged("InternalInterrupts");
-		    }
+			}
 		}
 
 		public int ExternalInterrupts
 		{
-		    get { return _externalInterrupts; }
-		    set
+			get { return _externalInterrupts; }
+			set
 			{
 				_externalInterrupts = value;
 				OnPropertyChanged("ExternalInterrupts");
@@ -120,7 +120,7 @@ namespace PomodoroKeeper.Model
 			{
 				_taskOpacity = value;
 				OnPropertyChanged("TaskOpacity");
-		    }
+			}
 		}
 
 		
@@ -152,7 +152,7 @@ namespace PomodoroKeeper.Model
 		public event PropertyChangedEventHandler PropertyChanged;
 		public void OnPropertyChanged(string propertyName)
 		{
-		    if (PropertyChanged != null)
+			if (PropertyChanged != null)
 				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 		}
 	}

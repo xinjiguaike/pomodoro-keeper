@@ -24,6 +24,7 @@ using System.Globalization;
 using Windows.Globalization;
 using SQLite;
 using Windows.UI.Popups;
+using System.Collections.ObjectModel;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
 
@@ -42,6 +43,8 @@ namespace PomodoroKeeper
 		public PomSettings LocalPomSettings;
 		public ResourceLoader ResLoader = new ResourceLoader();
 		public static SQLiteAsyncConnection Connection { get; set; }
+
+		public ObservableCollection<DailyPerformance> CurrentMonthPerformance = new ObservableCollection<DailyPerformance>(); 
 
 		/// <summary>
 		/// Initializes the singleton application object.  This is the first line of authored code
@@ -81,7 +84,7 @@ namespace PomodoroKeeper
 			{
 				await Windows.Storage.ApplicationData.Current.LocalFolder.GetFileAsync("pomtasks.db");
 				Connection = new SQLiteAsyncConnection("pomtasks.db");
-				GetData(); 
+				GetData();
 			}
 			catch
 			{
@@ -143,7 +146,7 @@ namespace PomodoroKeeper
 			Connection = new SQLiteAsyncConnection("pomtasks.db");
 			await Connection.CreateTableAsync<InventoryTask>();
 			await Connection.CreateTableAsync<ToDoTask>();
-			//await Connection.CreateTableAsync<DailyPerformance>();
+			await Connection.CreateTableAsync<DailyPerformance>();
 		}
 
 		private async void GetData()
@@ -162,6 +165,25 @@ namespace PomodoroKeeper
 					else
 					{
 						PomToDoSheet.AddToDoTask(newTask);
+					}
+				}
+
+				List<DailyPerformance> performanceList = await App.Connection.Table<DailyPerformance>().ToListAsync();
+				bool isCurDayRecorded = false;//Check if the current day storaged in the DB.
+				for (int i = 1; i <= DateTime.Now.Day; i++)
+				{
+					isCurDayRecorded = false;
+					foreach (DailyPerformance dayPerformance in performanceList)
+					{
+						if ((dayPerformance.Date.Year == DateTime.Now.Year) && (dayPerformance.Date.Month == DateTime.Now.Month) && (dayPerformance.Date.Day == i))
+						{
+							CurrentMonthPerformance.Add(dayPerformance);
+							isCurDayRecorded = true;
+						}
+					}
+					if (!isCurDayRecorded)
+					{
+						CurrentMonthPerformance.Add(new DailyPerformance() { Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, i)});
 					}
 				}
 			}

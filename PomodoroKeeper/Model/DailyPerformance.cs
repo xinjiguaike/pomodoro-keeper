@@ -4,8 +4,10 @@
  * Purpose: Definition of the Class DailyPerformance
  ***********************************************************************/
 
+using SQLite;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using Windows.Foundation;
@@ -21,21 +23,52 @@ using Windows.UI.Xaml.Navigation;
 
 namespace PomodoroKeeper.Model
 {
-	public class DailyPerformance
+	[Table("DailyPerformance")]
+	public class DailyPerformance: INotifyPropertyChanged
 	{
-		private int StartedPoms { get; set; }
+		private int _internals;
+		private int _externals;
 
-		private int EstimatedPoms { get; set; }
+		[PrimaryKey, AutoIncrement]
+		public int ID { get; set; }
 
-		private int CompletedPoms { get; set; }
+		public int StartedPoms { get; set; }
 
-		private int AbandonedPoms { get; set; }
+		public int EstimatedPoms { get; set; }
 
-		private int InternalInterrupts { get; set; }
+		public int CompletedPoms { get; set; }
 
-		private int ExternalInterrupts { get; set; }
+		public int AbandonedPoms { get; set; }
 
-		private DateTime Date { get; set; }
+		public int InternalInterrupts
+		{
+			get { return _internals; }
+			set
+			{
+				_internals = value;
+				OnPropertyChanged("InternalInterrupts");
+			}
+		}
 
+		public int ExternalInterrupts
+		{
+			get { return _externals; }
+			set
+			{
+				_externals = value;
+				OnPropertyChanged("ExternalInterrupts");
+			}
+		}
+
+		public DateTime Date { get; set; }
+
+
+		public event PropertyChangedEventHandler PropertyChanged;
+
+		public void OnPropertyChanged(string propertyName)
+		{
+			if (PropertyChanged != null)
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
 	}
 }

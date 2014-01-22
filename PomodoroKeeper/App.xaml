@@ -1,29 +1,29 @@
 ﻿<Application
-    x:Class="PomodoroKeeper.App"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:PomodoroKeeper">
+	x:Class="PomodoroKeeper.App"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="using:PomodoroKeeper">
 
-    <Application.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <!-- 
-                    Styles that define common aspects of the platform look and feel
-                    Required by Visual Studio project and item templates
-                 -->
-                <ResourceDictionary Source="Common/StandardStyles.xaml"/>
-                <!--<ResourceDictionary Source="Common/generic.xaml"/>-->
-                <ResourceDictionary Source="Common/SweetStyles.xaml"/>
-                <!--<ResourceDictionary Source="Common/SolidStyles.xaml"/>-->
-                <ResourceDictionary Source="Fonts/FontStyles.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-            
-            <DataTemplate x:Key="HubGridViewItemTemplate">
-                <Grid Width="240" Height="180" Background="#FF272727">
-                    <Image Source="{Binding img}"/>
-                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding title}" VerticalAlignment="Bottom" FontSize="16" FontFamily="Global User Interface" Margin="10,0,0,5"/>
-                </Grid>
-            </DataTemplate>
-        </ResourceDictionary>
-    </Application.Resources>
+	<Application.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<!-- 
+					Styles that define common aspects of the platform look and feel
+					Required by Visual Studio project and item templates
+				 -->
+				<ResourceDictionary Source="Common/StandardStyles.xaml"/>
+				<!--<ResourceDictionary Source="Common/generic.xaml"/>-->
+				<ResourceDictionary Source="Common/SweetStyles.xaml"/>
+				<!--<ResourceDictionary Source="Common/SolidStyles.xaml"/>-->
+				<ResourceDictionary Source="Fonts/FontStyles.xaml"/>
+			</ResourceDictionary.MergedDictionaries>
+			
+			<DataTemplate x:Key="HubGridViewItemTemplate">
+				<Grid Width="240" Height="180" Background="#FF272727">
+					<Image Source="{Binding img}"/>
+					<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding title}" VerticalAlignment="Bottom" FontSize="16" FontFamily="Global User Interface" Margin="10,0,0,5"/>
+				</Grid>
+			</DataTemplate>
+		</ResourceDictionary>
+	</Application.Resources>
 </Application>

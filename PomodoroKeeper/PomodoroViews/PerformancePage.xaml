@@ -11,19 +11,51 @@
 	mc:Ignorable="d">
 
 	<Page.Resources>
+		<common:IntToIntx20Converter x:Key="IntTo20xIntConverter"/>
 
-		<!--
-			Collection of grouped items displayed by this page, bound to a subset
-			of the complete item list because items in groups cannot be virtualized
-		-->
-		<CollectionViewSource
-			x:Name="groupedItemsViewSource"
-			Source="{Binding Groups}"
-			IsSourceGrouped="true"
-			ItemsPath="TopItems"/>
+		<DataTemplate x:Key="PomsLineItemTemplate">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="50"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+				<TextBlock Grid.Column="0" Text="{Binding}" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+				<Line x:Name="lineHorizontal" Grid.Column="1" X2="700" Stroke="Gray" StrokeThickness="1" Opacity="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+			</Grid>
+		</DataTemplate>
 
-		<!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
-		<x:String x:Key="AppName">My Application</x:String>
+		<DataTemplate x:Key="DayPerformanceItemTemplate">
+			<Grid Width="50" Height="500" HorizontalAlignment="Center">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="445"/>
+					<RowDefinition Height="*"/>
+				</Grid.RowDefinitions>
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,-8">
+					<Rectangle x:Name="PomsRect1" Fill="Green" Height="{Binding InternalInterrupts, Converter={StaticResource IntTo20xIntConverter}}" Width="10" VerticalAlignment="Bottom">
+						<ToolTipService.ToolTip>
+							<ToolTip Name="toolTip" Content="ToolTipService" Placement="Top" />
+						</ToolTipService.ToolTip>
+					</Rectangle>
+					<Rectangle x:Name="PomsRect2" Fill="Orange" ToolTipService.ToolTip="{Binding ExternalInterrupts, Converter={StaticResource IntTo20xIntConverter}}" Height="{Binding ExternalInterrupts, Converter={StaticResource IntTo20xIntConverter}}" Width="10" VerticalAlignment="Bottom"/>
+				</StackPanel>
+				<TextBlock Grid.Row="1" Text="{Binding Date.Day}" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0">
+					<ToolTipService.ToolTip>
+						<ToolTip Name="dfdds" Content="ToolTipService" Placement="Top" />
+					</ToolTipService.ToolTip>
+				</TextBlock>
+			</Grid>
+		</DataTemplate>
+
+		<Style x:Key="ListViewItemContainerStyle"  TargetType="ListViewItem">
+			<Setter Property="Height" Value="40" />
+			<Setter Property="VerticalAlignment" Value="Center"/>
+		</Style>
+		<Style x:Key="GridViewItemContainerStyle"  TargetType="GridViewItem">
+			<Setter Property="Width" Value="25" />
+			<Setter Property="VerticalAlignment" Value="Center"/>
+			<!--<Setter Property="Margin" Value="0"/>-->
+		</Style>
+
 	</Page.Resources>
 
 	<!--
@@ -31,7 +63,7 @@
 		* Row 0 contains the back button and page title
 		* Row 1 contains the rest of the page layout
 	-->
-	<Grid Style="{StaticResource LayoutRootStyle}">
+	<Grid Style="{StaticResource LayoutRootStyle}" Background="YellowGreen">
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="*"/>
 			<ColumnDefinition Width="10*"/>
@@ -41,31 +73,76 @@
 			<RowDefinition Height="*"/>
 		</Grid.RowDefinitions>
 
-		<!-- Horizontal scrolling grid used in most view states -->
+		<!-- Back button and page title -->
 		<Grid Grid.ColumnSpan="2">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="Auto"/>
 				<ColumnDefinition Width="*"/>
 			</Grid.ColumnDefinitions>
 			<Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
-			<TextBlock x:Name="pageTitle" Grid.Column="1" IsHitTestVisible="false" Style="{StaticResource PageHeaderTextStyle}">
-				<Run Text="My "/>
-				<Run Text="Performance in October 2013"/>
-			</TextBlock>
+			<TextBlock x:Name="pageTitle" Text="My Performance in October 2013" Grid.Column="1" IsHitTestVisible="false" Style="{StaticResource PageHeaderTextStyle}"/>
 		</Grid>
-		<ScrollViewer x:Name="PerformanceScrollViewer" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Margin="10,10,0,0" 
-			HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden"
-			VerticalScrollMode="Disabled" IsScrollInertiaEnabled="True" 
-			HorizontalScrollMode="Enabled" ZoomMode="Disabled" Width="1224">
-			<StackPanel Height="600" Width="1400" Orientation="Horizontal">
-				<Image Source="ms-appx:///Assets/lineandarea.jpg" Height="358" Width="338" Margin="0,0,450,0"/>
-				<Image Source="ms-appx:///Assets/multipleaxes.jpg" Height="358" Width="338" Margin="-300,0,0,0"/>
-				<Image Source="ms-appx:///Assets/lineandarea.jpg" Height="358" Width="338" Margin="150,0,450,0"/>
-			</StackPanel>
-		</ScrollViewer>
 
-		<!-- Back button and page title -->
-
+		<FlipView Grid.Column="1" Grid.Row="1" Height="500" Width="1050" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50,0,0,100">
+			<FlipViewItem>
+				<Grid Height="500" Width="850" Background="White">
+					<ListView x:Name="lvPomsLine" SelectionMode="None" IsHitTestVisible="False" VerticalAlignment="Bottom" Margin="0,0,0,15" ItemTemplate="{StaticResource PomsLineItemTemplate}" ItemContainerStyle="{StaticResource ListViewItemContainerStyle}"/>
+					<GridView x:Name="gvPerformanceDay" SelectionMode="None" IsHitTestVisible="False" ItemTemplate="{StaticResource DayPerformanceItemTemplate}" ItemContainerStyle="{StaticResource GridViewItemContainerStyle}" HorizontalAlignment="Left" Margin="60,0,0,0"/>
+					<Line x:Name="lineVertical" Y2="500" Stroke="Gray" StrokeThickness="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="53,0,0,40"/>
+					<StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
+						<TextBlock Text="Interruptions" Foreground="Black"/>
+						<StackPanel Orientation="Horizontal">
+							<Rectangle Fill="Orange" Width="15" Height="10"/>
+							<TextBlock Text="Internal" Foreground="Black" Margin="10,0,0,0"/>
+						</StackPanel>
+						<StackPanel Orientation="Horizontal">
+							<Rectangle Fill="Green" Width="15" Height="10"/>
+							<TextBlock Text="External" Foreground="Black" Margin="10,0,0,0"/>
+						</StackPanel>
+					</StackPanel>
+				</Grid>
+			</FlipViewItem>
+			<FlipViewItem>
+				<Grid Height="500" Width="850" Background="White">
+					<ListView x:Name="lvPomsLine2" IsHitTestVisible="False" VerticalAlignment="Bottom" Margin="0,0,0,15" ItemTemplate="{StaticResource PomsLineItemTemplate}" ItemContainerStyle="{StaticResource ListViewItemContainerStyle}"/>
+					<GridView x:Name="gvPerformanceDay2" IsHitTestVisible="False" ItemTemplate="{StaticResource DayPerformanceItemTemplate}" ItemContainerStyle="{StaticResource GridViewItemContainerStyle}" HorizontalAlignment="Left" Margin="60,0,0,0"/>
+					<Line x:Name="lineVertical2" Y2="500" Stroke="Gray" StrokeThickness="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="53,0,0,40"/>
+					<StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
+						<TextBlock Text="Interruptions" Foreground="Black"/>
+						<StackPanel Orientation="Horizontal">
+							<Rectangle Fill="Orange" Width="15" Height="10"/>
+							<TextBlock Text="Internal" Foreground="Black" Margin="10,0,0,0"/>
+						</StackPanel>
+						<StackPanel Orientation="Horizontal">
+							<Rectangle Fill="Green" Width="15" Height="10"/>
+							<TextBlock Text="External" Foreground="Black" Margin="10,0,0,0"/>
+						</StackPanel>
+					</StackPanel>
+				</Grid>
+			</FlipViewItem>
+			<FlipViewItem>
+				<Grid Height="500" Width="850" Background="White">
+					<ListView x:Name="lvInterruptLine3" SelectionMode="None" IsHitTestVisible="False" VerticalAlignment="Bottom" Margin="0,0,0,15" ItemTemplate="{StaticResource PomsLineItemTemplate}" ItemContainerStyle="{StaticResource ListViewItemContainerStyle}"/>
+					<GridView x:Name="gvPerformanceDay3" SelectionMode="None" IsHitTestVisible="False" ItemTemplate="{StaticResource DayPerformanceItemTemplate}" ItemContainerStyle="{StaticResource GridViewItemContainerStyle}" HorizontalAlignment="Left" Margin="60,0,0,0"/>
+					<Line x:Name="lineVertical3" Y2="500" Stroke="Gray" StrokeThickness="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="53,0,0,40"/>
+					<StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
+						<TextBlock Text="Interruptions" Foreground="Black"/>
+						<StackPanel Orientation="Horizontal">
+							<Rectangle Fill="Orange" Width="15" Height="10"/>
+							<TextBlock Text="Internal" Foreground="Black" Margin="10,0,0,0"/>
+						</StackPanel>
+						<StackPanel Orientation="Horizontal">
+							<Rectangle Fill="Green" Width="15" Height="10"/>
+							<TextBlock Text="External" Foreground="Black" Margin="10,0,0,0"/>
+						</StackPanel>
+					</StackPanel>
+				</Grid>
+			</FlipViewItem>
+		</FlipView>
+		<!--<GridView Margin="10,10,0,0">
+			
+		</GridView>-->
+		<!-- Horizontal scrolling grid used in most view states -->
 		<VisualStateManager.VisualStateGroups>
 
 			<!-- Visual states reflect the application's view state -->

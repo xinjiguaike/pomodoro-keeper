@@ -107,7 +107,7 @@
     <Compile Include="Common\BooleanNegationConverter.cs" />
     <Compile Include="Common\BooleanToVisibilityConverter.cs" />
     <Compile Include="Common\BooleanToVisibilityConverterReverse.cs" />
-    <Compile Include="Common\ByteToStringConverter.cs" />
+    <Compile Include="Common\IntToIntx20Converter.cs" />
     <Compile Include="Common\LayoutAwarePage.cs" />
     <Compile Include="Common\RichTextColumns.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
@@ -198,8 +198,8 @@
     <Content Include="SampleData\MainHubSampleDataSource\MainHubSampleDataSource_Files\6.png" />
     <Content Include="SampleData\MainHubSampleDataSource\MainHubSampleDataSource_Files\7.png" />
     <Content Include="SampleData\MainHubSampleDataSource\MainHubSampleDataSource_Files\8.png" />
-    <Content Include="Sounds\ding.wav" />
-    <Content Include="Sounds\ringin.wav" />
+    <Content Include="StringTable\Sounds\ding.wav" />
+    <Content Include="StringTable\Sounds\ringin.wav" />
     <None Include="packages.config" />
     <None Include="PomodoroKeeper_TemporaryKey.pfx" />
     <None Include="SampleData\GridviewSampleDataSource\GridviewSampleDataSource.xsd">
@@ -312,12 +312,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Controls.Toolkit\Controls.Toolkit\Controls.Toolkit.csproj">
-      <Project>{fbd446bc-6ce1-4c44-a420-3607e199683c}</Project>
-      <Name>Controls.Toolkit</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <SDKReference Include="Microsoft.VCLibs, Version=11.0">
       <Name>Microsoft Visual C++ Runtime Package</Name>
     </SDKReference>
@@ -326,9 +320,16 @@
     </SDKReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="NotificationsExtensions">
+    <Reference Include="NotificationsExtensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>.\NotificationsExtensions.winmd</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Controls.Toolkit\Controls.Toolkit\Controls.Toolkit.csproj">
+      <Project>{fbd446bc-6ce1-4c44-a420-3607e199683c}</Project>
+      <Name>Controls.Toolkit</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
     <VisualStudioVersion>11.0</VisualStudioVersion>

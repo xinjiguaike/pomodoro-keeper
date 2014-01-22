@@ -1,5 +1,7 @@
-﻿using System;
+﻿using PomodoroKeeper.Model;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using Windows.Foundation;
@@ -11,8 +13,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-//using System.Windows.Input;
-//using System.Windows.Input.MouseWheelEventArgs;
+
 
 // The Grouped Items Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234231
 
@@ -23,11 +24,30 @@ namespace PomodoroKeeper.PomodoroViews
 	/// </summary>
 	public sealed partial class PerformancePage : PomodoroKeeper.Common.LayoutAwarePage
 	{
+		static ObservableCollection<int> PomsLineCollection = new ObservableCollection<int>();
+		static ObservableCollection<int> DayPerformanceCollection = new ObservableCollection<int>();
+		static Random newRandom = new Random();
+		static PerformancePage()
+		{
+			for (int i = 0; i < 11; i++)
+			{
+				PomsLineCollection.Add(20 - 2*i);
+			}
+			for (int j = 0; j < 30; j++)
+			{
+				DayPerformanceCollection.Add(newRandom.Next(0, 400));
+			}
+		}
 		public PerformancePage()
 		{
+			//ToolTip
 			this.InitializeComponent();
+			lvPomsLine.ItemsSource = PomsLineCollection;
+			gvPerformanceDay.ItemsSource = (Application.Current as App).CurrentMonthPerformance;
+			//PerformanceChart.DataContext = PomsLineCollection;
 			//PerformanceScrollViewer.MouseWheel += new MouseWheelEventHandler(PerformanceScrollViewer_MouseWheel);
 		}
+
 
 		/// <summary>
 		/// Populates the page with content passed during navigation.  Any saved state is also
@@ -43,26 +63,5 @@ namespace PomodoroKeeper.PomodoroViews
 			// TODO: Assign a collection of bindable groups to this.DefaultViewModel["Groups"]
 		}
 		
-		/*void PerformanceScrollViewer_MouseWheel(object sender, MouseWheelEventArgs e)
-		{
-			ScrollViewer viewer = sender as ScrollViewer;
-			if (viewer == null)
-				return;
-			double num = Math.Abs((int)(e.Delta / 2));
-			double offset = 0.0;
-			if (e.Delta > 0)
-			{
-				offset = Math.Max((double)0.0, (double)(viewer.VerticalOffset - num));
-			}
-			else
-			{
-				offset = Math.Min(viewer.ScrollableHeight, viewer.VerticalOffset + num);
-			}
-			if (offset != viewer.VerticalOffset)
-			{
-				viewer.ScrollToVerticalOffset(offset);
-				e.Handled = true;
-			}
-		}*/
 	}
 }

@@ -336,6 +336,24 @@ namespace PomodoroKeeper.PomodoroViews
 			//	MessageDialog dialog = new MessageDialog("Insert ToDoTask Error, try again!");
 			//	dialog.ShowAsync();
 			//}
+			Random r = new Random();
+			ObservableCollection<DailyPerformance> testPerformanceList = new ObservableCollection<DailyPerformance>();
+			for (int i = 9; i < 30; i++)
+			{
+				DailyPerformance OcPerformance = new DailyPerformance() { InternalInterrupts = r.Next(0, 20), ExternalInterrupts = r.Next(0, 20), Date = new DateTime(2013, 10, i) };
+				DailyPerformance OcPerformance12 = new DailyPerformance() { InternalInterrupts = r.Next(0, 20), ExternalInterrupts = r.Next(0, 20), Date = new DateTime(2012, 10, i-3) };
+				DailyPerformance NovPerformance = new DailyPerformance() { InternalInterrupts = r.Next(0, 20), ExternalInterrupts = r.Next(0, 20), Date = new DateTime(2013, 11, i - 8) };
+				DailyPerformance NovPerformance12 = new DailyPerformance() { InternalInterrupts = r.Next(0, 20), ExternalInterrupts = r.Next(0, 20), Date = new DateTime(2012, 11, i - 5) };
+				testPerformanceList.Add(OcPerformance);
+				testPerformanceList.Add(OcPerformance12);
+				testPerformanceList.Add(NovPerformance);
+				testPerformanceList.Add(NovPerformance12);
+
+				await App.Connection.InsertAsync(OcPerformance);
+				await App.Connection.InsertAsync(OcPerformance12);
+				await App.Connection.InsertAsync(NovPerformance);
+				await App.Connection.InsertAsync(NovPerformance12);
+			}
 		}
 
 		private async void OnClear_Click(object sender, RoutedEventArgs e)
